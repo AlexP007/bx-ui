@@ -1,4 +1,7 @@
 export default class Basic {
+    constructor(elt) {
+        this.elt = elt;
+    }
     toggle() {
         BX.toggle(this.elt);
     };

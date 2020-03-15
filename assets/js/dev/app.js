@@ -1,4 +1,4 @@
-import MultiSelect from "./src/components/multi-select/index.js";
+import MultiSelect from "./src/components/multiSelect.js";
 
 let containers = BX.findChild(document.body, {
     attribute: {
