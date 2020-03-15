@@ -33,7 +33,7 @@ export default class Select extends Basic {
         return this.list;
     };
     setSelected(value) { // колбэк для списка, устанавливающий выбранное значение
-        let option = Array.from(this.options).filter((e) => {
+        let option = Array.from(this.elt.options).filter((e) => {
             return e.value === value;
         })[0];
         option.selected = true;
