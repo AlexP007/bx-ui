@@ -33,15 +33,23 @@ export default class List extends Basic {
         return data.map( (e) => BX.create('li', {
             text: e.text,
             props: props,
-            dataset: {value: e.value},
+            dataset: {
+                value: e.value,
+                activeClass: settings.active.class, // переданный класс для активного эл-та
+            },
         }))
     };
     setClickHandler(setSelected) {
         let list = this;
         return function(e) {
             if (e.target.tagName === 'LI') {
+                // всем эл-там удалим класс
+                let listItems = BX.findChild(list.elt, {tag: 'li'}, false, true);
+                listItems.forEach( (li) => {li.className = ''});
+                // установим класс активному эл-ту
+                e.target.className = e.target.dataset.activeClass;
                 list.value = e.target.dataset.value;
-                setSelected(list.value);
+                setSelected(list.value, e.target.textContent);
             }
         };
     }

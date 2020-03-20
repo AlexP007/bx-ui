@@ -12,7 +12,7 @@ export default class MultiSelect extends Basic {
 
         this.setEventHandler();
     };
-    changeSlaveValue(value) {
+    changeSlaveList(value) {
         let values = this.props.reduce((acc, cur) => {
             if (cur.FIRST_SELECT_FIELD_VALUE === value
                 && !acc.includes(cur.SECOND_SELECT_FIELD_VALUE)
@@ -21,13 +21,13 @@ export default class MultiSelect extends Basic {
             }
             return acc;
         }, []);
-        this.selectContainers.forEach( (e) => e.changeSlaveValue(values) );
+        this.selectContainers.forEach( (e) => e.changeSlaveList(values) );
     };
     setEventHandler() {
         let handler = BX.proxy(function (e) {
             e.stopPropagation();
-            this.changeSlaveValue(e.detail.value);
+            e.detail.isSlave || this.changeSlaveList(e.detail.value);
         }, this);
         BX.bind(this.elt, 'a2c-select-set', handler)
-    }
+    };
 }

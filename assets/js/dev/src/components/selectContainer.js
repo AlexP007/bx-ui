@@ -15,11 +15,20 @@ export default class SelectContainer extends Basic {
             this.elt.append(this.list.getElement());
         }
         this.setClickHandler();
-        // Установим заглушку
-        BX.findChild(elt, {
+        // Найдем спан для заглушки
+        this.promptElt =  BX.findChild(elt, {
             tag: 'span'
-        }).textContent = this.select.getPrompt();
+        });
+        // Установим заглушку
+        this.setPrompt();
+
+        this.setEventHandler();
     };
+
+    setPrompt() {
+        this.promptElt.textContent = this.select.getPrompt();
+    };
+
     getOutClickHandler() {
         let outClick = BX.proxy(function(e) {
             if (!this.elt.contains(e.target) ) {
@@ -30,6 +39,7 @@ export default class SelectContainer extends Basic {
         }, this);
         return outClick;
     };
+
     setClickHandler() {
         let self = this;
         BX.bind(self.elt, 'click', function() {
@@ -42,6 +52,7 @@ export default class SelectContainer extends Basic {
             }
         });
     };
+
     toggleIcon() {
         let icon = this.icon;
         return () => {
@@ -50,8 +61,9 @@ export default class SelectContainer extends Basic {
                 : icon.dataset.opened;
         }
     };
-    changeSlaveValue(values) {
-        if (this.select.isSlave()) {
+
+    changeSlaveList(values) {
+        if (this.select.isSlave() ) {
             let filteredOptions = this.select.options.filter( (e) => {
                 return values.includes(e.value);
             });
@@ -62,5 +74,12 @@ export default class SelectContainer extends Basic {
                 this.elt.append(this.list.getElement());
             }
         }
-    }
+    };
+
+    setEventHandler() {
+        let handler = BX.proxy(function (e) {
+            this.setPrompt();
+        }, this);
+        BX.bind(this.elt, 'a2c-select-set', handler)
+    };
 }

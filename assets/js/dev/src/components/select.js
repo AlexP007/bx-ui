@@ -32,12 +32,12 @@ export default class Select extends Basic {
     getList() {
         return this.list;
     };
-    setSelected(value) { // колбэк для списка, устанавливающий выбранное значение
+    setSelected(value, textContent) { // колбэк для списка, устанавливающий выбранное значение
         let option = Array.from(this.elt.options).filter((e) => {
             return e.value === value;
         })[0];
         option.selected = true;
-        this.fireSetEvent(value);
+        this.fireSetEvent(value, textContent);
     };
     createList(options) {
         this.list && this.list.remove();
@@ -47,15 +47,25 @@ export default class Select extends Basic {
             settings: {
                 ul: {
                     class: this.dataset.listClass,
+                },
+                li: {
+                    active: {
+                        class: this.dataset.listActive,
+                    }
                 }
             },
             setSelected: BX.proxy(this.setSelected, this),
         });
     };
-    fireSetEvent(value) {
+    fireSetEvent(value, textContent) {
+        this.prompt = textContent;
         this.elt.dispatchEvent(new CustomEvent('a2c-select-set', {
             bubbles: true,
-            detail: {value}
+            detail: {
+                value,
+                textContent,
+                isSlave: this.isSlave(),
+            }
         }));
     }
 }
