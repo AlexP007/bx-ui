@@ -32,7 +32,7 @@ class MultiSelect extends Basic
         $data = json_encode($params['data'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
         // Установим массив options
-        [$firstOptions, $secondOptions] = $this->setOptions($data);
+        [$firstOptions, $secondOptions] = $this->setOptions($params['data']);
 
         $firstSelect = new Select([
             'name'              => $first['name'],
