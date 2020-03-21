@@ -31,10 +31,9 @@ export default class MultiSelect extends Basic {
             e.stopPropagation();
             if (!e.detail.isSlave) {
                 this.changeSlaveList(e.detail.value);
-            } else {
-                let [first, second] = this.getSelectValues();
-                this.fireOuterEvent(first, second);
             }
+            let [first, second] = this.getSelectValues();
+            this.fireOuterEvent(first, second);
         }, this);
         BX.bind(this.elt, Constants.select.setEvent, handler);
     };

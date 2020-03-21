@@ -11,6 +11,7 @@ export default class Select extends Basic {
 
         this.isSlave() || this.createList(this.options);
     }
+
     _setOptions() {
         this.options = [];
         Array.from(this.elt.options).forEach( (e) => {
@@ -24,15 +25,19 @@ export default class Select extends Basic {
             }
         });
     }
+
     getPrompt() {
         return this.prompt;
     }
+
     isSlave() {
         return this.type === Constants.multiSelect.slave;
     };
+
     getList() {
         return this.list;
     };
+
     setSelected(value, textContent) { // колбэк для списка, устанавливающий выбранное значение
         let option = Array.from(this.elt.options).filter((e) => {
             return e.value === value;
@@ -40,6 +45,11 @@ export default class Select extends Basic {
         option.selected = true;
         this.fireSetEvent(value, textContent);
     };
+
+    unsetSelected() {
+        this.elt.selectedIndex = -1;
+    }
+
     createList(options) {
         this.list && this.list.remove();
 
@@ -58,6 +68,7 @@ export default class Select extends Basic {
             setSelected: BX.proxy(this.setSelected, this),
         });
     };
+
     fireSetEvent(value, textContent) {
         this.prompt = textContent;
         this.elt.dispatchEvent(new CustomEvent(Constants.select.setEvent, {

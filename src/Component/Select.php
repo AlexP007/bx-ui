@@ -34,7 +34,8 @@ class Select extends Basic
                     'data-type'        => $params['type'],
                     'data-list-class'  => $params['list_class'],
                     'data-list-active' => $params['list_active_class'],
-                ]
+                ],
+                'prompt' => $params['prompt'],
             ]),
             $helper->div(null, $params['icon_closed'], [
                 'attributes' => [

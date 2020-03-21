@@ -20,11 +20,13 @@ export default class SelectContainer extends Basic {
         this.promptElt =  BX.findChild(elt, {
             tag: 'span'
         });
+        // Сохрание текс заглушки
+        this.promptStub = this.promptElt.textContent;
         this.setEventHandler();
     };
 
-    setPrompt() {
-        this.promptElt.textContent = this.select.getPrompt();
+    setPrompt(text) {
+        this.promptElt.textContent = text;
     };
 
     getOutClickHandler() {
@@ -62,6 +64,11 @@ export default class SelectContainer extends Basic {
 
     changeSlaveList(values) {
         if (this.select.isSlave() ) {
+            // изменим значения
+            this.select.unsetSelected();
+            // поставим заглушку
+            this.setPrompt(this.promptStub);
+            // теперь отрендерим список
             let filteredOptions = this.select.options.filter( (e) => {
                 return values.includes(e.value);
             });
@@ -75,8 +82,8 @@ export default class SelectContainer extends Basic {
     };
 
     setEventHandler() {
-        let handler = BX.proxy(function (e) {
-            this.setPrompt();
+        let handler = BX.proxy(function () {
+            this.setPrompt(this.select.getPrompt());
         }, this);
         BX.bind(this.elt,  Constants.select.setEvent, handler)
     };
