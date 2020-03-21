@@ -2,7 +2,7 @@
     "name": "alexp007/bx-ui",
     "description": "User interface widgets for bitrix",
     "type": "library",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "AlexP007",
@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "php": "^7.1",
+        "php": "^7.1.3",
         "alexp007/bx-helper": "^1.0.0"
 
     },
