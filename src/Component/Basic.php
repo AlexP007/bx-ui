@@ -20,7 +20,6 @@ abstract class Basic
     public final function __construct(array $params)
     {
         $this->params = $params;
-        return $this->render();
     }
 
     /**
@@ -37,7 +36,7 @@ abstract class Basic
      *
      * @return string
      */
-    private function render(): string
+    public function render(): string
     {
         return implode($this->create() );
     }
