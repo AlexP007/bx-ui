@@ -8,6 +8,7 @@ export default class SelectContainer extends Basic {
         this.icon = BX.findChild(elt, {
             attribute: {'data-type': Constants.multiSelect.icon}
         });
+        this.iconOpened = true;
         this.select = new Select(BX.findChild(elt, {tag: 'select'}) );
         // Выставим относительное позиционирование
         this.elt.style.position = 'relative';
@@ -31,7 +32,7 @@ export default class SelectContainer extends Basic {
         let outClick = BX.proxy(function(e) {
             if (!this.elt.contains(e.target) ) {
                 this.list.hide();
-                this.toggleIcon();
+                this.iconOpened && this.toggleIcon();
                 BX.unbind(window, 'click', outClick);
             }
         }, this);
