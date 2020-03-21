@@ -1,10 +1,10 @@
 <?php
 
 
-namespace BxUi\Helper;
+namespace BxUI\Helper;
 
 
-use BxUi\Component\MultiSelect;
+use BxUI\Component\MultiSelect;
 
 /**
  * Class UI

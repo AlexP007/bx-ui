@@ -1,12 +1,12 @@
 <?php
 
 
-namespace BxUi\Component;
+namespace BxUI\Component;
 
 
 /**
  * Class Basic
- * @package BxUi\Component
+ * @package BxUI\Component
  * @license MIT
  *
  * @author AlexP007

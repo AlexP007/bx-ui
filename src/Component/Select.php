@@ -1,14 +1,14 @@
 <?php
 
 
-namespace BxUi\Component;
+namespace BxUI\Component;
 
 
 use BxHelper\Helper\Html;
 
 /**
  * Class Select
- * @package BxUi\Component
+ * @package BxUI\Component
  * @license MIT
  *
  * @author AlexP007
