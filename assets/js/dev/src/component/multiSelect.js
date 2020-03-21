@@ -16,10 +16,10 @@ export default class MultiSelect extends Basic {
 
     changeSlaveList(value) {
         let values = this.props.reduce((acc, cur) => {
-            if (cur.FIRST_SELECT_FIELD_VALUE === value
-                && !acc.includes(cur.SECOND_SELECT_FIELD_VALUE)
+            if (cur.first_value === value
+                && !acc.includes(cur.second_value)
             ) {
-                acc.push(cur.SECOND_SELECT_FIELD_VALUE);
+                acc.push(cur.second_value);
             }
             return acc;
         }, []);
