@@ -45,13 +45,11 @@ class UI
 
     public function multiSelect(array $first, array $second, array $container, array $data): string
     {
-        $select = new MultiSelect([
+        return (new MultiSelect([
             'first'     => $first,
             'second'    => $second,
             'container' => $container,
             'data'      => $data,
-        ]);
-
-        return $select->render();
+        ]) )->render();
     }
 }

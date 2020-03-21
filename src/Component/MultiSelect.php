@@ -34,7 +34,7 @@ class MultiSelect extends Basic
         // Установим массив options
         [$firstOptions, $secondOptions] = $this->setOptions($params['data']);
 
-        $firstSelect = new Select([
+        $firstSelect = (new Select([
             'name'              => $first['name'],
             'type'              => self::MASTER,
             'class'             => $first['class'],
@@ -44,9 +44,9 @@ class MultiSelect extends Basic
             'list_active_class' => $first['list_active_class'],
             'icon_closed'       => $first['icon_closed'],
             'icon_opened'       => $first['icon_opened'],
-        ]);
+        ]) )->render();
 
-        $secondSelect = new Select([
+        $secondSelect = (new Select([
             'name'              => $second['name'],
             'type'              => self::SLAVE,
             'class'             => $second['class'],
@@ -56,7 +56,7 @@ class MultiSelect extends Basic
             'list_active_class' => $second['list_active_class'],
             'icon_closed'       => $second['icon_closed'],
             'icon_opened'       => $second['icon_opened'],
-        ]);
+        ]) )->render();
 
         $content = implode($firstSelect, $secondSelect);
 
