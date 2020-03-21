@@ -1,12 +1,13 @@
 import Basic from "./basic.js";
 import SelectContainer from './selectContainer.js';
+import Constants from "../util/const.js";
 
 export default class MultiSelect extends Basic {
     constructor(elt) {
         super(elt);
         this.props = BX.parseJSON(elt.dataset.props);
         this.selectContainers = BX.findChild(elt, {
-            attribute: {'data-type': "a2c-select-single-container"}
+            attribute: {'data-type': Constants.select.container}
         }, false, true)
             .map( (elt) => new SelectContainer(elt) );
 
@@ -35,7 +36,7 @@ export default class MultiSelect extends Basic {
                 this.fireOuterEvent(first, second);
             }
         }, this);
-        BX.bind(this.elt, 'a2c-select-set', handler);
+        BX.bind(this.elt, Constants.select.setEvent, handler);
     };
 
     getSelectValues() {
@@ -43,7 +44,7 @@ export default class MultiSelect extends Basic {
     };
 
     fireOuterEvent(first, second) {
-        this.elt.dispatchEvent(new CustomEvent('a2c-select-selected', {
+        this.elt.dispatchEvent(new CustomEvent(Constants.multiSelect.setEvent, {
             bubbles: true,
             detail: {
                 first,

@@ -1,11 +1,12 @@
 import Basic from "./basic.js";
 import Select from "./select.js";
+import Constants from "../util/const.js";
 
 export default class SelectContainer extends Basic {
     constructor(elt) {
         super(elt);
         this.icon = BX.findChild(elt, {
-            attribute: {'data-type': 'a2c-select-icon'}
+            attribute: {'data-type': Constants.multiSelect.icon}
         });
         this.select = new Select(BX.findChild(elt, {tag: 'select'}) );
         // Выставим относительное позиционирование
@@ -19,9 +20,6 @@ export default class SelectContainer extends Basic {
         this.promptElt =  BX.findChild(elt, {
             tag: 'span'
         });
-        // Установим заглушку
-        this.setPrompt();
-
         this.setEventHandler();
     };
 
@@ -55,11 +53,9 @@ export default class SelectContainer extends Basic {
 
     toggleIcon() {
         let icon = this.icon;
-        return () => {
-            icon.className = icon.className === icon.dataset.opened
-                ? icon.dataset.closed
-                : icon.dataset.opened;
-        }
+        icon.className = icon.className === icon.dataset.opened
+            ? icon.dataset.closed
+            : icon.dataset.opened;
     };
 
     changeSlaveList(values) {
@@ -80,6 +76,6 @@ export default class SelectContainer extends Basic {
         let handler = BX.proxy(function (e) {
             this.setPrompt();
         }, this);
-        BX.bind(this.elt, 'a2c-select-set', handler)
+        BX.bind(this.elt,  Constants.select.setEvent, handler)
     };
 }

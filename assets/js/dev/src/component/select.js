@@ -1,16 +1,17 @@
 import Basic from "./basic.js";
 import List from "./list.js";
+import Constants from "../util/const.js";
 
 export default class Select extends Basic {
     constructor(elt) {
         super(elt);
-        this.__setOptions();
+        this._setOptions();
         this.dataset = this.elt.dataset;
         this.type = this.dataset.type;
 
         this.isSlave() || this.createList(this.options);
     }
-    __setOptions() {
+    _setOptions() {
         this.options = [];
         Array.from(this.elt.options).forEach( (e) => {
             if (e.disabled) {
@@ -27,7 +28,7 @@ export default class Select extends Basic {
         return this.prompt;
     }
     isSlave() {
-        return this.type === 'a2c-select-slave';
+        return this.type === Constants.multiSelect.slave;
     };
     getList() {
         return this.list;
@@ -59,7 +60,7 @@ export default class Select extends Basic {
     };
     fireSetEvent(value, textContent) {
         this.prompt = textContent;
-        this.elt.dispatchEvent(new CustomEvent('a2c-select-set', {
+        this.elt.dispatchEvent(new CustomEvent(Constants.select.setEvent, {
             bubbles: true,
             detail: {
                 value,
