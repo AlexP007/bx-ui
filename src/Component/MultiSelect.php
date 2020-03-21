@@ -58,7 +58,7 @@ class MultiSelect extends Basic
             'icon_opened'       => $second['icon_opened'],
         ]) )->render();
 
-        $content = implode($firstSelect, $secondSelect);
+        $content = $firstSelect . $secondSelect;
 
         return [
             $helper->div($content, $container['class'], [
