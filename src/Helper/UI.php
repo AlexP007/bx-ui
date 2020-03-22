@@ -4,7 +4,7 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\MultiSelect;
+use BxUI\Component\{MultiSelect, Cta};
 
 /**
  * Class UI
@@ -51,5 +51,10 @@ class UI
             'container' => $container,
             'data'      => $data,
         ]) )->render();
+    }
+
+    public function cta(array $params): string
+    {
+        return  (new Cta($params))->render();
     }
 }
