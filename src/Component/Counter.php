@@ -17,6 +17,8 @@ use BxHelper\Helper\Html;
  */
 class Counter extends Basic
 {
+    const TYPE = 'bx-ui-counter';
+
     protected function create(): array
     {
         $helper = Html::getInstance();
@@ -28,6 +30,7 @@ class Counter extends Basic
                     'id' => $params['id'],
                     'data-min' => $params['min'],
                     'data-max' => $params['max'],
+                    'data-type'   => self::TYPE,
                 ]
             ])
         ];
