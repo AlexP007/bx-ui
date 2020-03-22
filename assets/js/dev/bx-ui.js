@@ -23,7 +23,7 @@ function handler() {
         }
     }, true, true);
     // Для каждого cta
-    multiSelects.forEach(function (elt) {
+    cta.forEach(function (elt) {
         new Cta(elt);
     });
 }

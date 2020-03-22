@@ -10,7 +10,7 @@ export default class Cta extends Basic {
     addEventListeners() {
         const enableHandler = BX.proxy(this.enableHandler, this);
         const disableHandler = BX.proxy(this.disableHandler, this);
-        const event = Constants.btn.event;
+        const event = Constants.cta.event;
 
         BX.bind(document.body, event.enable, enableHandler);
         BX.bind(document.body, event.disable, disableHandler);
@@ -19,28 +19,29 @@ export default class Cta extends Basic {
     disableHandler() {
         this.timer && clearTimeout(this.timer);
         this.disable();
-        BX.unbind(this.getElement(), 'click', this.clickHandler);
+
+        BX.unbind(this.getElement(), 'click', this.handlerPointer);
     };
 
     enableHandler() {
         this.enable();
-        const handler = BX.proxy(this.clickHandler, this);
+        this.handlerPointer = BX.proxy(this.clickHandler, this);
 
-        BX.bind(this.getElement(), 'click', handler)
+        BX.bind(this.getElement(), 'click', this.handlerPointer)
     };
 
     clickHandler() {
-        const btn = this;
+        const cta = this;
         const active = this.getData('active');
 
-        btn.addClass(active);
-        BX.unbind(btn.getElement(), 'click', btn.clickHandler);
-        btn.disableClick();
+        cta.addClass(active);
+        BX.unbind(cta.getElement(), 'click', cta.handlerPointer);
+        cta.disableClick();
 
-        btn.timer = setTimeout(() => {
-            btn.removeClass(active);
-            BX.bind(btn.getElement(), 'click', btn.clickHandler);
-            btn.enableClick();
+        cta.timer = setTimeout(() => {
+            cta.removeClass(active);
+            BX.bind(cta.getElement(), 'click', cta.handlerPointer);
+            cta.enableClick();
             }, 300);
     };
 
@@ -57,7 +58,7 @@ export default class Cta extends Basic {
     };
 
     enableClick() {
-        BX.unbind(this.getElement(), 'click', this.clickHandler);
+        BX.unbind(this.getElement(), 'click', this.disableClickHandler);
     };
 
     disableClickHandler(e) {
