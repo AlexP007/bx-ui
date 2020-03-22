@@ -1,5 +1,5 @@
-import Basic from "./basic.js";
-import List from "./list.js";
+import Basic from "./Basic.js";
+import List from "./List.js";
 import Constants from "../util/const.js";
 
 export default class Select extends Basic {

@@ -1,5 +1,5 @@
-import MultiSelect from "./src/component/multiSelect";
-import Cta from './src/component/cta'
+import MultiSelect from "./src/component/MultiSelect";
+import Cta from './src/component/Cta'
 import Constants from "./src/util/const";
 
 BX.ready(handler);

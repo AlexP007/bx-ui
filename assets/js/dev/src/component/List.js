@@ -1,4 +1,4 @@
-import Basic from './basic.js';
+import Basic from './Basic.js';
 
 export default class List extends Basic {
     constructor({options, settings, setSelected}) {

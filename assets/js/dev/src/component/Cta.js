@@ -1,4 +1,4 @@
-import Basic from './basic'
+import Basic from './Basic'
 import Constants from '../util/const'
 
 export default class Cta extends Basic {

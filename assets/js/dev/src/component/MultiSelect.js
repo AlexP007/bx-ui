@@ -1,5 +1,5 @@
-import Basic from "./basic.js";
-import SelectContainer from './selectContainer.js';
+import Basic from "./Basic.js";
+import SelectContainer from './SelectContainer.js';
 import Constants from "../util/const.js";
 
 export default class MultiSelect extends Basic {
