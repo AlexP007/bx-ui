@@ -17,7 +17,7 @@ export default class Cta extends Basic {
     };
 
     disableHandler() {
-        this.timer && clearTimeout(this.timer);
+        this.removeClass(this.getData('active'));
         this.disable();
 
         BX.unbind(this.getElement(), 'click', this.handlerPointer);
@@ -25,6 +25,7 @@ export default class Cta extends Basic {
 
     enableHandler() {
         this.enable();
+        this.enableClick();
         this.handlerPointer = BX.proxy(this.clickHandler, this);
 
         BX.bind(this.getElement(), 'click', this.handlerPointer)
@@ -37,6 +38,7 @@ export default class Cta extends Basic {
         cta.addClass(active);
         BX.unbind(cta.getElement(), 'click', cta.handlerPointer);
         cta.disableClick();
+        cta.dispatchOuterEvent();
 
         cta.timer = setTimeout(() => {
             cta.removeClass(active);
@@ -64,5 +66,14 @@ export default class Cta extends Basic {
     disableClickHandler(e) {
         e.preventDefault();
         e.stopPropagation();
+    };
+
+    dispatchOuterEvent() {
+        this.getElement().dispatchEvent(new CustomEvent(Constants.btn.event.outer, {
+            bubbles: true,
+            detail: {
+                elt: this.getElement(),
+            }
+        }));
     };
 }
