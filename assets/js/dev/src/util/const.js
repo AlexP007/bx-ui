@@ -9,5 +9,8 @@ export default {
     select: {
         container: "bx-ui-select-container",
         setEvent: "bx-ui-select-set",
+    },
+    cta: {
+        type: "bx-ui-cta",
     }
 }
