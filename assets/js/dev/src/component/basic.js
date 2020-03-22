@@ -1,7 +1,9 @@
 export default class Basic {
     constructor(elt) {
-        this.elt = elt;
-        this.dataset = elt.dataset;
+        if (elt) {
+            this.elt = elt;
+            this.dataset = elt.dataset;
+        };
     }
     toggle() {
         BX.toggle(this.elt);
