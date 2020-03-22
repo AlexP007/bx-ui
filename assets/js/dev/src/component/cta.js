@@ -12,8 +12,8 @@ export default class Cta extends Basic {
         const disableHandler = BX.proxy(this.disableHandler, this);
         const event = Constants.btn.event;
 
-        BX.bind(this.getElement(), event.enable, enableHandler);
-        BX.bind(this.getElement(), event.disable, disableHandler);
+        BX.bind(document.body, event.enable, enableHandler);
+        BX.bind(document.body, event.disable, disableHandler);
     };
 
     disableHandler() {
