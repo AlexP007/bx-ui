@@ -12,5 +12,10 @@ export default {
     },
     cta: {
         type: "bx-ui-cta",
+        event: {
+            enable: "bx-ui-cta-enable",
+            disable: "bx-ui-cta-disable",
+            outer: "bx-ui-cta-click",
+        }
     }
 }

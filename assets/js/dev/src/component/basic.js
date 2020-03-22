@@ -1,6 +1,7 @@
 export default class Basic {
     constructor(elt) {
         this.elt = elt;
+        this.dataset = elt.dataset;
     }
     toggle() {
         BX.toggle(this.elt);
@@ -20,4 +21,13 @@ export default class Basic {
     getElement() {
         return this.elt;
     };
+    addClass(className) {
+        this.elt.classList.add(className);
+    };
+    removeClass(className) {
+        this.elt.classList.remove(className);
+    };
+    getData(name) {
+        return this.dataset[name];
+    }
 }
