@@ -4,7 +4,13 @@ import Constants from '../util/const'
 export default class Cta extends Basic {
     constructor(elt) {
         super(elt);
-        this.addEventListeners();
+        this.id = elt.id;
+        if (this.id) {
+            this.addEventListeners();
+        } else {
+            this.handlerPointer = BX.proxy(this.clickHandler, this);
+            BX.bind(this.getElement(), 'click', this.handlerPointer)
+        }
     };
 
     addEventListeners() {
@@ -16,14 +22,20 @@ export default class Cta extends Basic {
         BX.bind(document.body, event.disable, disableHandler);
     };
 
-    disableHandler() {
+    disableHandler(e) {
+        if (e.detail.id !== this.id) {
+            return;
+        }
         this.removeClass(this.getData('active'));
         this.disable();
 
         BX.unbind(this.getElement(), 'click', this.handlerPointer);
     };
 
-    enableHandler() {
+    enableHandler(e) {
+        if (e.detail.id !== this.id) {
+            return;
+        }
         this.enable();
         this.enableClick();
         this.handlerPointer = BX.proxy(this.clickHandler, this);
@@ -37,8 +49,8 @@ export default class Cta extends Basic {
 
         cta.addClass(active);
         BX.unbind(cta.getElement(), 'click', cta.handlerPointer);
+        cta.id && cta.dispatchOuterEvent(); // только если есть id
         cta.disableClick();
-        cta.dispatchOuterEvent();
 
         cta.timer = setTimeout(() => {
             cta.removeClass(active);
