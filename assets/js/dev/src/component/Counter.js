@@ -5,6 +5,8 @@ export default class Counter extends Basic {
     constructor(elt) {
         super(elt);
         this.counter = +elt.textContent;
+        this.min = this.getData('min');
+        this.max = this.getData('max');
     };
 
     addEventListeners() {
@@ -25,10 +27,14 @@ export default class Counter extends Basic {
     };
 
     increment() {
-        this.getElement().textContent = ++this.counter;
+        if (this.counter < this.max) {
+            this.getElement().textContent = ++this.counter;
+        }
     };
 
     decrement() {
-        this.getElement().textContent = --this.counter;
+        if (this.counter > this.min) {
+            this.getElement().textContent = --this.counter;
+        }
     };
 }
