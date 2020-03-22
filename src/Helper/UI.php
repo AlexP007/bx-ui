@@ -4,7 +4,7 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\{MultiSelect, Cta};
+use BxUI\Component\{MultiSelect, Cta, Counter};
 
 /**
  * Class UI
@@ -55,6 +55,14 @@ class UI
 
     public function cta(array $params): string
     {
-        return  (new Cta($params))->render();
+        return  (new Cta($params) )->render();
+    }
+
+    public function counter(string $id, int $content, array $params): string
+    {
+        $params['id'] = $id;
+        $params['content'] = $content;
+
+        return (new Counter($params) )->render();
     }
 }
