@@ -69,7 +69,7 @@ export default class Cta extends Basic {
     };
 
     dispatchOuterEvent() {
-        this.getElement().dispatchEvent(new CustomEvent(Constants.btn.event.outer, {
+        this.getElement().dispatchEvent(new CustomEvent(Constants.cta.event.outer, {
             bubbles: true,
             detail: {
                 elt: this.getElement(),
