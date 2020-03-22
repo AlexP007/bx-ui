@@ -17,5 +17,12 @@ export default {
             disable: "bx-ui-cta-disable",
             outer: "bx-ui-cta-click",
         }
+    },
+    counter: {
+        type: "bx-ui-counter",
+        event: {
+            increment: "bx-ui-counter-inc",
+            decrement: "bx-ui-counter-dec",
+        }
     }
 }

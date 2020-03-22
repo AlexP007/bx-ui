@@ -4,7 +4,6 @@ import Constants from '../util/const'
 export default class Cta extends Basic {
     constructor(elt) {
         super(elt);
-        this.id = elt.id;
         if (this.id) {
             this.addEventListeners();
         } else {

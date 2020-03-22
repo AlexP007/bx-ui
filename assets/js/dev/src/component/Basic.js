@@ -3,6 +3,7 @@ export default class Basic {
         if (elt) {
             this.elt = elt;
             this.dataset = elt.dataset;
+            this.id = elt.id;
         };
     }
     toggle() {
