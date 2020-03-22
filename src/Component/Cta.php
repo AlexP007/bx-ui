@@ -33,7 +33,8 @@ class Cta extends Basic
                     'attributes' => [
                         'class'       => $params['class'],
                         'id'          => $params['id'],
-                        'data-active' => $params['active'],
+                        'data-type'   => self::TYPE,
+                        'data-active' => $params['active'], // класс активной кнопки
                         'data-link'   => $params['link'], // закладка на будущеее - обрабатывать frame или ajax
                     ]
                 ]
