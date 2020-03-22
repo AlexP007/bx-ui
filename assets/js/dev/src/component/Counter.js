@@ -27,14 +27,16 @@ export default class Counter extends Basic {
     };
 
     increment() {
-        if (this.counter < this.max) {
-            this.getElement().textContent = ++this.counter;
+        if (this.max && this.counter >= this.max) {
+            return;
         }
+        this.getElement().textContent = ++this.counter;
     };
 
     decrement() {
-        if (this.counter > this.min) {
-            this.getElement().textContent = --this.counter;
+        if (this.min && this.counter <= this.min) {
+           return;
         }
+        this.getElement().textContent = --this.counter;
     };
 }
