@@ -29,10 +29,11 @@ class Dismiss extends Basic
         $content = $helper->span($content);
 
         return [
-            $helper->button($content, $params['class'], self::TYPE, [
+            $helper->button(null, $content, self::TYPE, [
                 'attributes' => [
                     'id'        => $params['id'],
                     'style'     => $params['style'],
+                    'class'     => $params['class'],
                     'data-type' => self::DATA_TYPE,
                 ]
             ])
