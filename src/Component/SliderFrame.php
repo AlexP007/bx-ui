@@ -42,7 +42,11 @@ class SliderFrame extends Basic
                 $helper->heading(
                     $heading['type'],
                     $heading['content'],
-                    $heading['params'] ?? []
+                    [
+                        'attributes' => [
+                            'class' => $heading['class'],
+                            'style' => $heading['style'],
+                    ]]
                 ));
         }
 
