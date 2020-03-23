@@ -7,7 +7,7 @@ namespace BxUI\Component;
 use BxHelper\Helper\Html;
 
 /**
- * Class Counter
+ * Class Dismiss
  * @package BxUI\Component
  * @license MIT
  *
@@ -15,22 +15,25 @@ use BxHelper\Helper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-ui
  */
-class Counter extends Basic
+class Dismiss extends Basic
 {
-    const DATA_TYPE = 'bx-ui-counter';
+    const DATA_TYPE = 'bx-ui-dismiss';
+    const TYPE = 'button';
 
     protected function create(): array
     {
         $helper = Html::getInstance();
         $params = $this->params;
 
+        $content = $params['content'] ?? 'x';
+        $content = $helper->span($content);
+
         return [
-            $helper->span($params['content'], $params['class'], [
+            $helper->button($content, $params['class'], self::TYPE, [
                 'attributes' => [
-                    'id' => $params['id'],
-                    'data-min' => $params['min'],
-                    'data-max' => $params['max'],
-                    'data-type'   => self::DATA_TYPE,
+                    'id'        => $params['id'],
+                    'style'     => $params['style'],
+                    'data-type' => self::DATA_TYPE,
                 ]
             ])
         ];

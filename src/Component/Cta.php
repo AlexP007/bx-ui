@@ -17,7 +17,7 @@ use BxHelper\Helper\Html;
  */
 class Cta extends Basic
 {
-    const TYPE = 'bx-ui-cta';
+    const DATA_TYPE = 'bx-ui-cta';
 
     protected function create(): array
     {
@@ -33,7 +33,7 @@ class Cta extends Basic
                     'attributes' => [
                         'class'       => $params['class'],
                         'id'          => $params['id'],
-                        'data-type'   => self::TYPE,
+                        'data-type'   => self::DATA_TYPE,
                         'data-active' => $params['active'], // класс активной кнопки
                         'data-link'   => $params['link'], // закладка на будущеее - обрабатывать frame или ajax
                         'disabled'    => $params['disabled'],
