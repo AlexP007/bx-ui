@@ -24,5 +24,11 @@ export default {
             increment: "bx-ui-counter-inc",
             decrement: "bx-ui-counter-dec",
         }
+    },
+    dismiss: {
+        type: "bx-ui-dismiss",
+        dataDismiss: "dismiss",
+        dataDismissAttr: "data-dismiss",
+        dataDismissValue: "Y",
     }
 }

@@ -1,3 +1,5 @@
+import Constants from '../util/const';
+
 export default class Basic {
     constructor(elt) {
         if (elt) {
@@ -31,6 +33,6 @@ export default class Basic {
         this.elt.classList.remove(className);
     };
     getData(name) {
-        return this.dataset[name];
-    }
+        return this.dataset ? this.dataset[name] : false;
+    };
 }

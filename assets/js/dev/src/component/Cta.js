@@ -1,5 +1,5 @@
-import Basic from './Basic'
-import Constants from '../util/const'
+import Basic from './Basic';
+import Constants from '../util/const';
 
 export default class Cta extends Basic {
     constructor(elt) {
