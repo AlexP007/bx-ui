@@ -4,7 +4,7 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\{Dismiss, MultiSelect, Cta, Counter};
+use BxUI\Component\{Dismiss, MultiSelect, Cta, Counter, SliderFrame};
 
 /**
  * Class UI
@@ -69,5 +69,12 @@ class UI
     public function dismiss(array $params): string
     {
         return (new Dismiss($params) )->render();
+    }
+
+    public function sliderFrame(string $url, array $params): string
+    {
+        $params['url'] = $url;
+
+        return (new SliderFrame($params) )->render();
     }
 }
