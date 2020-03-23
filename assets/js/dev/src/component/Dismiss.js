@@ -9,10 +9,8 @@ export default class Dismiss extends Basic {
     };
 
     findDismissible() {
-        const attrKey = Constants.dismiss.dataDismissAttr;
-        const attr = {};
-        attr[attrKey] = Constants.dismiss.dataDismissValue;
-        return BX.findParent(this.getElement(), {attribute: attr})
+        const val = Constants.dismiss.dataDismissValue;
+        return BX.findParent(this.getElement(), {attribute: {'data-dismiss': val}})
     };
 
     addEventListener() {

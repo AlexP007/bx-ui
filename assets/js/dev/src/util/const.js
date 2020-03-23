@@ -28,7 +28,6 @@ export default {
     dismiss: {
         type: "bx-ui-dismiss",
         dataDismiss: "dismiss",
-        dataDismissAttr: "data-dismiss",
         dataDismissValue: "Y",
     }
 }
