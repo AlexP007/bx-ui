@@ -4,7 +4,7 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\{MultiSelect, Cta, Counter};
+use BxUI\Component\{Dismiss, MultiSelect, Cta, Counter};
 
 /**
  * Class UI
@@ -64,5 +64,10 @@ class UI
         $params['content'] = $content;
 
         return (new Counter($params) )->render();
+    }
+
+    public function dismiss(array $params): string
+    {
+        return (new Dismiss($params) )->render();
     }
 }
