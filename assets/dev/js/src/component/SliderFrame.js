@@ -10,14 +10,18 @@ export default class SliderFrame extends Basic {
     };
 
     getUrl() {
-        return this.getData('url');
+        const url = new URL(this.getData('url'), location.origin);
+        url.searchParams.append('IFRAME', 'Y');
+        return url.href;
     };
 
     createFrame() {
         return BX.create('iframe', {
             props: {
                 src: this.getUrl(),
-                frameborder: 0,
+            },
+            style: {
+                width: '100%',
             }
         })
     };
