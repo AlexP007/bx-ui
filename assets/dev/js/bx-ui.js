@@ -1,4 +1,5 @@
 import MultiSelect from "./src/component/MultiSelect";
+import SliderFrame from "./src/component/SliderFrame";
 import Cta from './src/component/Cta';
 import Counter from "./src/component/Counter";
 import Dismiss from "./src/component/Dismiss";
@@ -34,4 +35,11 @@ function handler() {
     }, true, true);
     // Для каждого dismiss
     dismisses.forEach(elt => {new Dismiss(elt)});
+
+    // Найдем все SliderFrame
+    const sliderFrames =  BX.findChild(document.body, {
+        attribute: {'data-type': Constants.sliderFrame.container}
+    }, true, true);
+    // Для каждого SliderFrame
+    sliderFrames.forEach(elt => {new SliderFrame(elt)});
 }

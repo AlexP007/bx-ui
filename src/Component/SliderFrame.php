@@ -66,7 +66,7 @@ class SliderFrame extends Basic
                    'id'           => $params['id'],
                    'style'        => $params['style'],
                    'data-url'     => $params['url'],
-                   'data-type'    => self::BODY,
+                   'data-type'    => self::CONTAINER,
                    'data-dismiss' => self::DATA_DISMISS_VALUE,
                ]
             ])

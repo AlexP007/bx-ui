@@ -5,6 +5,7 @@ import Constants from "../util/const";
 export default class SliderFrame extends Basic {
     constructor(elt) {
         super(elt);
+        this.setBody();
         this.insertFrame();
     };
 
@@ -14,14 +15,18 @@ export default class SliderFrame extends Basic {
 
     createFrame() {
         return BX.create('iframe', {
-            attr: {
+            props: {
                 src: this.getUrl(),
                 frameborder: 0,
             }
         })
     };
 
+    setBody() {
+       this.body = BX.findChild(this.getElement(), {attribute: {'data-type': Constants.sliderFrame.body}})
+    };
+
     insertFrame() {
-        BX.findChild(this.getElement(), {attribute: {'data-type': Constants.sliderFrame.body}})
+        this.body.append(this.createFrame() );
     };
 }
