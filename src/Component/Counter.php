@@ -27,10 +27,10 @@ class Counter extends Basic
         return [
             $helper->span($params['content'], $params['class'], [
                 'attributes' => [
-                    'id' => $params['id'],
-                    'data-min' => $params['min'],
-                    'data-max' => $params['max'],
-                    'data-type'   => self::DATA_TYPE,
+                    'id'        => $params['id'],
+                    'data-min'  => $params['min'],
+                    'data-max'  => $params['max'],
+                    'data-type' => self::DATA_TYPE,
                 ]
             ])
         ];

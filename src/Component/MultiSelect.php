@@ -63,7 +63,8 @@ class MultiSelect extends Basic
         return [
             $helper->div($content, $container['class'], [
                 'attributes' => [
-                    'data-type' => self::CONTAINER,
+                    'id'         => $container['id'],
+                    'data-type'  => self::CONTAINER,
                     'data-props' => $data,
                 ]
             ])
