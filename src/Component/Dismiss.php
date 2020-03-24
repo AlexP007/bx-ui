@@ -19,7 +19,7 @@ class Dismiss extends Basic
 {
     const DATA_TYPE = 'bx-ui-dismiss';
     const TYPE = 'button';
-    const STYLE = 'float: right; margin-right: 5px; margin-top: 5px; border: none;';
+    const STYLE = 'float: right; outline: none; border: none;';
 
     protected function create(): array
     {
