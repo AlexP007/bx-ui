@@ -71,8 +71,9 @@ class UI
         return (new Dismiss($params) )->render();
     }
 
-    public function sliderFrame(string $url, array $params): string
+    public function sliderFrame(string $id, string $url, array $params): string
     {
+        $params['id'] = $id;
         $params['url'] = $url;
 
         return (new SliderFrame($params) )->render();

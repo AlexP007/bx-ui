@@ -34,5 +34,9 @@ export default {
     sliderFrame: {
         container: "bx-ui-sliderframe-container",
         body: "bx-ui-sliderframe-body",
+        event: {
+            show: "bx-ui-slideframe-show",
+            hide: "bx-ui-slideframe-hide",
+        },
     }
 }
