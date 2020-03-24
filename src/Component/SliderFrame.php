@@ -23,7 +23,6 @@ class SliderFrame extends Basic
     const CONTAINER_STYLE = 'display: none';
     const BODY = 'bx-ui-sliderframe-body';
     const DATA_DISMISS_VALUE = 'Y';
-    const DISMISS_STYLE = 'float: right; margin-right: 5px; margin-top: 5px;';
 
     protected function create(): array
     {
@@ -33,8 +32,6 @@ class SliderFrame extends Basic
         $params['style'] = $params['style'] ?? self::CONTAINER_STYLE;
 
         $dismiss = $params['dismiss'] ?? [];
-        $dismiss['style'] = $dismiss['style'] ?? self::DISMISS_STYLE;
-
         $heading = $params['heading'];
 
         $headerContent = [

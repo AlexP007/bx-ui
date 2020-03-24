@@ -19,6 +19,7 @@ class Dismiss extends Basic
 {
     const DATA_TYPE = 'bx-ui-dismiss';
     const TYPE = 'button';
+    const STYLE = 'float: right; margin-right: 5px; margin-top: 5px; border: none;';
 
     protected function create(): array
     {
@@ -32,7 +33,7 @@ class Dismiss extends Basic
             $helper->button(null, $content, self::TYPE, [
                 'attributes' => [
                     'id'        => $params['id'],
-                    'style'     => $params['style'],
+                    'style'     => $params['style'] ?? self::STYLE,
                     'class'     => $params['class'],
                     'data-type' => self::DATA_TYPE,
                 ]
