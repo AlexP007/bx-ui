@@ -4,6 +4,7 @@ import Constants from "../util/const";
 export default class SliderFrame extends Basic {
     constructor(elt) {
         super(elt);
+        this.addEventListeners();
     };
 
     addEventListeners() {
@@ -15,7 +16,7 @@ export default class SliderFrame extends Basic {
         BX.bind(document.body, event.hide, hide);
     };
 
-    show() {
+    show(e) {
         if (e.detail.id !== this.id) {
             return;
         }
@@ -26,7 +27,7 @@ export default class SliderFrame extends Basic {
         super.show();
     };
 
-    hide() {
+    hide(e) {
         if (e.detail.id !== this.id) {
             return;
         }
