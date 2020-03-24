@@ -24,7 +24,7 @@ class UI
         // Регистрируем свое расширение
         \CJSCore::RegisterExt(
             "bx-ui", [
-                "js" => "/local/js/bx-ui/dist/bx-ui.js",
+                "js" => "/local/js/bx-ui/prod/js/bx-ui.js",
                 "rel" => ['core'],
             ]
         );
