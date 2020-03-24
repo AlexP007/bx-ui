@@ -27,10 +27,12 @@ export default {
     },
     dismiss: {
         type: "bx-ui-dismiss",
-        dataDismissValue: "Y",
+        data: {
+            dismiss: "Y"
+        },
     },
     sliderFrame: {
         container: "bx-ui-sliderframe-container",
-        body: "bx-ui-sliderframe-body"
+        body: "bx-ui-sliderframe-body",
     }
 }

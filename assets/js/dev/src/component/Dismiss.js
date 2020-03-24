@@ -9,7 +9,7 @@ export default class Dismiss extends Basic {
     };
 
     findDismissible() {
-        const val = Constants.dismiss.dataDismissValue;
+        const val = Constants.dismiss.data.dismiss;
         return BX.findParent(this.getElement(), {attribute: {'data-dismiss': val}})
     };
 
