@@ -4,7 +4,8 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\{Dismiss, InputCounter, MultiSelect, Cta, Counter, SliderFrame};
+use BxUI\Traits\Thrower;
+use BxUI\Component\{CounterControl, Dismiss, InputCounter, MultiSelect, Cta, Counter, SliderFrame};
 
 /**
  * Class UI
@@ -17,6 +18,8 @@ use BxUI\Component\{Dismiss, InputCounter, MultiSelect, Cta, Counter, SliderFram
  */
 class UI
 {
+    use Thrower;
+
     static $instance;
 
     private final function __construct()
@@ -85,5 +88,15 @@ class UI
         $params['url'] = $url;
 
         return (new SliderFrame($params) )->render();
+    }
+
+    public function counterControl(string $counterId, string $role, array $params): string
+    {
+       self::ensureParameter(in_array($role, ['inc', 'dec']), 'CounterControl role could be only inc or dec');
+
+       $params['data-counter-id'] = $counterId;
+       $params['data-role'] = $role;
+
+       return (new CounterControl($params) );
     }
 }
