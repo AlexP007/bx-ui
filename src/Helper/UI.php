@@ -94,9 +94,9 @@ class UI
     {
        self::ensureParameter(in_array($role, ['inc', 'dec']), 'CounterControl role could be only inc or dec');
 
-       $params['data-counter-id'] = $counterId;
-       $params['data-role'] = $role;
+       $params['counter_id'] = $counterId;
+       $params['role'] = $role;
 
-       return (new CounterControl($params) );
+       return (new CounterControl($params) )->render();
     }
 }

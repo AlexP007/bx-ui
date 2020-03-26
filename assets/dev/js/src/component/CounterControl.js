@@ -6,7 +6,7 @@ export default class CounterControl extends Basic {
         super(elt);
 
         this.role = this.getData('role');
-        this.counterId = this.getData('counter-id');
+        this.counterId = this.getData('counterId');
         this.step = this.getData('step');
 
         const onClick = BX.proxy(this.onClick, this);

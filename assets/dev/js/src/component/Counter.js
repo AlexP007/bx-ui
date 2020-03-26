@@ -12,7 +12,7 @@ export default class Counter extends Basic {
 
     addEventListeners() {
         const incrementHandler = BX.proxy(this.incrementHandler, this);
-        const decrementHandler = BX.proxy(this.disableHandler, this);
+        const decrementHandler = BX.proxy(this.decrementHandler, this);
         const event = Constants.counter.event;
 
         BX.bind(document.body, event.increment, incrementHandler);
