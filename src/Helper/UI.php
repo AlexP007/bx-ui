@@ -4,7 +4,7 @@
 namespace BxUI\Helper;
 
 
-use BxUI\Component\{Dismiss, MultiSelect, Cta, Counter, SliderFrame};
+use BxUI\Component\{Dismiss, InputCounter, MultiSelect, Cta, Counter, SliderFrame};
 
 /**
  * Class UI
@@ -64,6 +64,14 @@ class UI
         $params['content'] = $content;
 
         return (new Counter($params) )->render();
+    }
+
+    public function inputCounter(string $id, int $value, array $params): string
+    {
+        $params['id'] = $id;
+        $params['value'] = "$value";
+
+        return (new InputCounter($params) )->render();
     }
 
     public function dismiss(array $params): string
