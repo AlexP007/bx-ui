@@ -4,7 +4,7 @@ import Constants from "../util/const";
 export default class Counter extends Basic {
     constructor(elt) {
         super(elt);
-        this.counter = +elt.textContent;
+        this.counter = +elt.textContent || +elt.value;
         this.min = this.getData('min');
         this.max = this.getData('max');
         this.addEventListeners();
@@ -20,24 +20,30 @@ export default class Counter extends Basic {
     };
 
     incrementHandler(e) {
-        e.detail.id === this.id && this.increment();
+        e.detail.id === this.id && this.increment(e.detail.step);
     };
 
     decrementHandler(e) {
-        e.detail.id === this.id && this.decrement();
+        e.detail.id === this.id && this.decrement(e.detail.step);
     };
 
-    increment() {
+    increment(step) {
         if (this.max && this.counter >= this.max) {
             return;
         }
-        this.getElement().textContent = ++this.counter;
+        step = step || 1;
+        this.counter += step;
+
+        this.getElement().textContent = this.counter;
     };
 
-    decrement() {
+    decrement(step) {
         if (this.min && this.counter <= this.min) {
            return;
         }
-        this.getElement().textContent = --this.counter;
+        step = step || 1;
+        this.counter -= step;
+
+        this.getElement().textContent = this.counter;
     };
 }

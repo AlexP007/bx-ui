@@ -1,17 +1,23 @@
 import Counter from "./Counter";
 
 export default class InputCounter extends Counter {
-    increment() {
+    increment(step) {
         if (this.max && this.counter >= this.max) {
             return;
         }
-        this.getElement().value = ++this.counter;
+        step = step || 1;
+        this.counter += step;
+
+        this.getElement().value = this.counter;
     };
 
-    decrement() {
+    decrement(step) {
         if (this.min && this.counter <= this.min) {
             return;
         }
-        this.getElement().value = --this.counter;
+        step = step || 1;
+        this.counter -= step;
+
+        this.getElement().value = this.counter;
     };
 }
