@@ -28,6 +28,9 @@ export default {
     inputCounter: {
         type: "bx-ui-inputcounter",
     },
+    counterControl: {
+        type: "bx-ui-counter-control",
+    },
     dismiss: {
         type: "bx-ui-dismiss",
         data: {

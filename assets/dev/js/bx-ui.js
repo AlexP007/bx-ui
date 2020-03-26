@@ -3,6 +3,7 @@ import SliderFrame from "./src/component/SliderFrame";
 import Cta from './src/component/Cta';
 import Counter from "./src/component/Counter";
 import InputCounter from "./src/component/InputCounter";
+import CounterControl from "./src/component/CounterControl";
 import Dismiss from "./src/component/Dismiss";
 import Constants from "./src/util/const";
 
@@ -36,6 +37,13 @@ function handler() {
     }, true, true);
     // Для каждого InputCounter
     inputCounters.forEach(elt => {new InputCounter(elt)});
+
+    // Найдем все CounterControl
+    const counterControls = BX.findChild(document.body, {
+        attribute: {'data-type': Constants.counterControl.type}
+    }, true, true);
+    // Для каждого InputCounter
+    counterControls.forEach(elt => {new CounterControl(elt)});
 
     // Найдем все dismiss
     const dismisses =  BX.findChild(document.body, {
