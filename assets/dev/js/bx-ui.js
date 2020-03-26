@@ -2,6 +2,7 @@ import MultiSelect from "./src/component/MultiSelect";
 import SliderFrame from "./src/component/SliderFrame";
 import Cta from './src/component/Cta';
 import Counter from "./src/component/Counter";
+import InputCounter from "./src/component/InputCounter";
 import Dismiss from "./src/component/Dismiss";
 import Constants from "./src/util/const";
 
@@ -28,6 +29,13 @@ function handler() {
     }, true, true);
     // Для каждого Counter
     counters.forEach(elt => {new Counter(elt)});
+
+    // Найдем все InputCounter
+    const inputCounters = BX.findChild(document.body, {
+        attribute: {'data-type': Constants.inputCounter.type}
+    }, true, true);
+    // Для каждого InputCounter
+    inputCounters.forEach(elt => {new InputCounter(elt)});
 
     // Найдем все dismiss
     const dismisses =  BX.findChild(document.body, {

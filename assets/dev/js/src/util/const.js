@@ -25,6 +25,9 @@ export default {
             decrement: "bx-ui-counter-dec",
         }
     },
+    inputCounter: {
+        type: "bx-ui-inputcounter",
+    },
     dismiss: {
         type: "bx-ui-dismiss",
         data: {

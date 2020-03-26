@@ -25,7 +25,7 @@ class InputCounter extends Basic
         $params = $this->params;
 
         return [
-            $helper->text($params['name'] ,$params['value'], [
+            $helper->text($params['name'], $params['value'], [
                 'attributes' => [
                     'id'        => $params['id'],
                     'class'     => $params['class'],
