@@ -9,14 +9,14 @@ export default class InputCounter extends Counter {
     };
 
     onChange(e) {
-        let val = 0;
-        if (e.target.value > this.max) {
+        let val = +e.target.value;
+        if (val > this.max) {
             val = this.max;
-        } else if (e.target.value < this.min) {
+        } else if (val < this.min) {
             val = this.min;
         }
 
-        this.counter = +val;
+        this.counter = val;
         this.getElement().value = +val;
     };
 
@@ -32,6 +32,7 @@ export default class InputCounter extends Counter {
         }
 
         this.getElement().value = this.counter;
+        this.dispatchChange();
     };
 
     decrement(step) {
@@ -46,5 +47,11 @@ export default class InputCounter extends Counter {
         }
 
         this.getElement().value = this.counter;
+        this.dispatchChange();
+    };
+
+    dispatchChange() {
+        let event = new Event('change', {bubbles: true, cancelable: true});
+        this.getElement().dispatchEvent(event);
     };
 }
