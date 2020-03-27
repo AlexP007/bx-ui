@@ -23,6 +23,7 @@ export default {
         event: {
             increment: "bx-ui-counter-inc",
             decrement: "bx-ui-counter-dec",
+            set: "bx-ui-counter-set",
         }
     },
     inputCounter: {

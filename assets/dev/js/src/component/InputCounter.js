@@ -54,4 +54,20 @@ export default class InputCounter extends Counter {
         let event = new Event('change', {bubbles: true, cancelable: true});
         this.getElement().dispatchEvent(event);
     };
+
+    set(value) {
+        if (this.min && this.max) {
+            if (value >= this.min) {
+                this.counter = value;
+            }
+            if (value <= this.max) {
+                this.counter = value;
+            }
+        } else {
+            this.counter = value;
+        }
+
+        this.getElement().value = this.counter;
+        this.dispatchChange();
+    }
 }
