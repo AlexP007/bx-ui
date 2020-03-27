@@ -27,7 +27,7 @@ export default class InputCounter extends Counter {
         step = step || 1;
         this.counter += step;
 
-        if (this.counter > this.max) {
+        if (this.max && this.counter > this.max) {
             this.counter = this.max;
         }
 
@@ -42,7 +42,7 @@ export default class InputCounter extends Counter {
         step = step || 1;
         this.counter -= step;
 
-        if (this.counter < this.min) {
+        if (this.min && this.counter < this.min) {
             this.counter = this.min;
         }
 
