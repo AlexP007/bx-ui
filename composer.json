@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": "^7.1.3",
-        "alexp007/bx-helper": "^1.1.0"
+        "alexp007/bx-helper": "^1.2.0"
 
     },
     "autoload": {

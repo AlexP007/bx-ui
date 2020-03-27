@@ -22,7 +22,7 @@ export default class SliderFrame extends Basic {
         }
 
         this.body || this.setBody();
-        this.frame || this.insertFrame();
+        this.frame || this.setFrame();
 
         super.show();
     };
@@ -41,23 +41,12 @@ export default class SliderFrame extends Basic {
         return url.href;
     };
 
-    createFrame() {
-        return BX.create('iframe', {
-            props: {
-                src: this.getUrl(),
-            },
-            style: {
-                width: '100%',
-            }
-        })
-    };
-
     setBody() {
-       this.body = BX.findChild(this.getElement(), {attribute: {'data-type': Constants.sliderFrame.body}})
+       this.body = BX.findChild(this.getElement(), {attribute: {'data-type': Constants.sliderFrame.body}});
     };
 
-    insertFrame() {
-        this.frame = this.createFrame();
-        this.body.append(this.frame);
+    setFrame() {
+        this.frame = BX.findChild(this.body, {attribute: {'data-type': Constants.sliderFrame.iframe}});
+        this.frame.src = this.getUrl();
     };
 }

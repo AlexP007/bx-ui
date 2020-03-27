@@ -6,6 +6,7 @@ namespace BxUI\Component;
 
 use BxHelper\Helper\Html;
 
+use BxHelper\Html\Iframe;
 use BxUI\Helper\UI;
 
 /**
@@ -22,6 +23,7 @@ class SliderFrame extends Basic
     const CONTAINER = 'bx-ui-sliderframe-container';
     const CONTAINER_STYLE = 'display: none';
     const BODY = 'bx-ui-sliderframe-body';
+    const IFRAME = 'bx-ui-sliderframe-iframe';
     const DATA_DISMISS_VALUE = 'Y';
 
     protected function create(): array
@@ -54,7 +56,15 @@ class SliderFrame extends Basic
 
         $header = $helper->div($headerContent);
 
-        $body = $helper->div(null, null, [
+        // создадим айфрейм, чтобы из клиентского кода можно было сразу навесить на него
+        $iframe = $helper->iframe(null, null, [
+            'attributes' => [
+                'id'        => $params['iframe_id'],
+                'data-type' => self::IFRAME,
+            ]
+        ]);
+
+        $body = $helper->div($iframe, null, [
             'attributes' => ['data-type' => self::BODY]
         ]);
 
