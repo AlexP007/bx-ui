@@ -19,4 +19,14 @@ export default class Dismiss extends Basic {
             BX.hide(dismissible);
         })
     };
+
+    fireOuterEvent(e) {
+        this.elt.dispatchEvent(new CustomEvent(Constants.multiSelect.setEvent, {
+            bubbles: true,
+            detail: {
+                e,
+                dismissible: this.dismissible,
+            }
+        }));
+    }
 }

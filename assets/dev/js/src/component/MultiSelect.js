@@ -46,6 +46,7 @@ export default class MultiSelect extends Basic {
         this.elt.dispatchEvent(new CustomEvent(Constants.multiSelect.setEvent, {
             bubbles: true,
             detail: {
+                id: this.getElement().id,
                 first,
                 second,
             }
