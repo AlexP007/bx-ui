@@ -15,9 +15,12 @@ export default class Dismiss extends Basic {
 
     addEventListener() {
         const dismissible = this.dismissible;
-        BX.bind(this.getElement(), 'click', function() {
-            BX.hide(dismissible);
-        })
+
+        if (dismissible) {
+            BX.bind(this.getElement(), 'click', function() {
+                BX.hide(dismissible);
+            })
+        }
     };
 
     fireOuterEvent(e) {
