@@ -29,6 +29,7 @@ class InputCounter extends Basic
                 'attributes' => [
                     'id'        => $params['id'],
                     'class'     => $params['class'],
+                    'name'      => $params['name'],
                     'data-min'  => "${params['min']}",
                     'data-max'  => "${params['max']}",
                     'data-type' => self::DATA_TYPE,
