@@ -36,6 +36,9 @@ export default {
         data: {
             dismiss: "Y"
         },
+        event: {
+            dismissed: 'bx-ui-dismiss-dismissed'
+        }
     },
     sliderFrame: {
         container: "bx-ui-sliderframe-container",

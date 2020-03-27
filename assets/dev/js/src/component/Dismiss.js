@@ -14,17 +14,18 @@ export default class Dismiss extends Basic {
     };
 
     addEventListener() {
+        const dismiss = this;
         const dismissible = this.dismissible;
-
         if (dismissible) {
-            BX.bind(this.getElement(), 'click', function() {
+            BX.bind(this.getElement(), 'click', function(e) {
                 BX.hide(dismissible);
+                dismiss.fireOuterEvent(e);
             })
         }
     };
 
     fireOuterEvent(e) {
-        this.elt.dispatchEvent(new CustomEvent(Constants.multiSelect.setEvent, {
+        this.elt.dispatchEvent(new CustomEvent(Constants.dismiss.event.dismissed, {
             bubbles: true,
             detail: {
                 e,
