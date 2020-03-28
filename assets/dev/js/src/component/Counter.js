@@ -39,6 +39,7 @@ export default class Counter extends Basic {
             return;
         }
         step = step || 1;
+        this.counter = this.counter || 0;
         this.counter += step;
 
         if (this.max && this.counter > this.max) {
@@ -53,6 +54,7 @@ export default class Counter extends Basic {
            return;
         }
         step = step || 1;
+        this.counter = this.counter || 0;
         this.counter -= step;
 
         if (this.min && this.counter < this.min) {
