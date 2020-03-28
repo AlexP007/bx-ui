@@ -67,7 +67,6 @@ class SliderFrame extends Basic
         $body = $helper->div($iframe, null, [
             'attributes' => [
                 'data-type' => self::BODY,
-                'style'     => 'height: 100%;'
             ]
         ]);
 

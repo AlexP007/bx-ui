@@ -1,5 +1,6 @@
 import Basic from "./Basic";
 import Constants from "../util/const";
+import {documentHeight} from "../util/measure";
 
 export default class SliderFrame extends Basic {
     constructor(elt) {
@@ -46,7 +47,13 @@ export default class SliderFrame extends Basic {
     };
 
     setFrame() {
+        const setHeight = BX.proxy(this.setBodyHeight, this);
         this.frame = BX.findChild(this.body, {attribute: {'data-type': Constants.sliderFrame.iframe}});
         this.frame.src = this.getUrl();
+        this.frame.onload = setHeight;
+    };
+
+    setBodyHeight() {
+        this.body.style.height = documentHeight(this.frame.contentWindow.document) + 'px';
     };
 }
