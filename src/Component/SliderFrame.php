@@ -22,8 +22,11 @@ class SliderFrame extends Basic
 {
     const CONTAINER = 'bx-ui-sliderframe-container';
     const CONTAINER_STYLE = 'display: none';
+
     const BODY = 'bx-ui-sliderframe-body';
     const IFRAME = 'bx-ui-sliderframe-iframe';
+
+    const DISMISS_ROLE = 'hide';
     const DATA_DISMISS_VALUE = 'Y';
 
     protected function create(): array
@@ -37,7 +40,7 @@ class SliderFrame extends Basic
         $heading = $params['heading'];
 
         $headerContent = [
-            UI::getInstance()->dismiss($dismiss)
+            UI::getInstance()->dismiss(self::DISMISS_ROLE ,$dismiss)
         ];
         if (!empty($heading) ) {
             array_push($headerContent,
