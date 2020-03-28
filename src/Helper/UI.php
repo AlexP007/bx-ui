@@ -36,7 +36,7 @@ class UI
         \CJSCore::RegisterExt(
             "bx-ui", [
                 "js" => "/local/js/bx-ui/prod/js/bx-ui.js",
-                "rel" => ['core' ,'fx'],
+                "rel" => ['core'],
             ]
         );
 
