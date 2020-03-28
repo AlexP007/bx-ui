@@ -5,6 +5,7 @@ import {documentHeight} from "../util/measure";
 export default class SliderFrame extends Basic {
     constructor(elt) {
         super(elt);
+        this.needRefresh = false;
         this.addEventListeners();
     };
 
@@ -23,9 +24,13 @@ export default class SliderFrame extends Basic {
         if (e.detail.id !== this.id) {
             return;
         }
-
         this.body || this.setBody();
         this.frame || this.setFrame();
+
+        if (this.needRefresh) {
+            this.frame.src = this.getUrl();
+            this.setBodyHeight();
+        }
 
         super.show();
     };
@@ -44,8 +49,7 @@ export default class SliderFrame extends Basic {
     }
 
     if (this.frame) {
-        this.frame.src = this.getUrl();
-        this.setBodyHeight();
+        this.needRefresh = true;
     }
 
     };
