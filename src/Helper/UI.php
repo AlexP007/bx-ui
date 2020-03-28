@@ -22,6 +22,14 @@ class UI
 
     static $instance;
 
+    // dismiss
+    const DISMISS_HIDE = 'hide';
+    const DISMISS_REMOVE = 'remove';
+
+    // counterControl
+    const COUNTER_CONTROL_INC = 'inc';
+    const COUNTER_CONTROL_DEC = 'dec';
+
     private final function __construct()
     {
         // Регистрируем свое расширение
