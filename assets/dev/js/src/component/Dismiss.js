@@ -19,13 +19,13 @@ export default class Dismiss extends Basic {
         const dismissible = this.dismissible;
         if (dismissible.getElement()) {
             BX.bind(this.getElement(), 'click', function(e) {
+                dismiss.fireOuterEvent(e);
                 if (dismiss.role === 'hide') {
                     dismissible.hide()
                 }
                 if (dismiss.role === 'remove') {
                     dismissible.remove();
                 }
-                dismiss.fireOuterEvent(e);
             })
         }
     };
