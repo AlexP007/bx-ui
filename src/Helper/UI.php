@@ -77,8 +77,11 @@ class UI
         return (new InputCounter($params) )->render();
     }
 
-    public function dismiss(array $params): string
+    public function dismiss(string $role, array $params): string
     {
+        self::ensureParameter(in_array($role, ['hide', 'remove']), 'Dismiss role could be only hide or remove');
+        $params['role'] = $role;
+
         return (new Dismiss($params) )->render();
     }
 

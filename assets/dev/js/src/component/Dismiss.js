@@ -4,7 +4,8 @@ import Constants from '../util/const';
 export default class Dismiss extends Basic {
     constructor(elt) {
         super(elt);
-        this.dismissible = this.findDismissible();
+        this.role = this.getData('role');
+        this.dismissible = new Basic(this.findDismissible() ); // Обернем в basic, чтобы добавить полезных методов
         this.addEventListener();
     };
 
@@ -16,9 +17,14 @@ export default class Dismiss extends Basic {
     addEventListener() {
         const dismiss = this;
         const dismissible = this.dismissible;
-        if (dismissible) {
+        if (dismissible.getElement()) {
             BX.bind(this.getElement(), 'click', function(e) {
-                BX.hide(dismissible);
+                if (dismiss.role === 'hide') {
+                    dismissible.hide()
+                }
+                if (dismiss.role === 'remove') {
+                    dismissible.remove();
+                }
                 dismiss.fireOuterEvent(e);
             })
         }
@@ -29,7 +35,7 @@ export default class Dismiss extends Basic {
             bubbles: true,
             detail: {
                 e,
-                dismissible: this.dismissible,
+                dismissible: this.dismissible.getElement(),
             }
         }));
     }

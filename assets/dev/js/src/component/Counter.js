@@ -23,11 +23,11 @@ export default class Counter extends Basic {
     };
 
     incrementHandler(e) {
-        e.detail.id === this.id && this.increment(e.detail.step);
+        e.detail.id === this.id && this.increment(e.detail.step || 1);
     };
 
     decrementHandler(e) {
-        e.detail.id === this.id && this.decrement(e.detail.step);
+        e.detail.id === this.id && this.decrement(e.detail.step || 1);
     };
 
     setHandler(e) {

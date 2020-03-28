@@ -18,12 +18,20 @@ use BxHelper\Helper\Html;
 class Dismiss extends Basic
 {
     const DATA_TYPE = 'bx-ui-dismiss';
+    const DATA_HIDE = 'hide';
+    const DATA_REMOVE = 'remove';
     const TYPE = 'button';
 
     protected function create(): array
     {
         $helper = Html::getInstance();
         $params = $this->params;
+
+        if ($params['role'] === 'hide') {
+            $role = self::DATA_HIDE;
+        } elseif ($params['role'] === 'remove') {
+            $role = self::DATA_REMOVE;
+        }
 
         $content = $params['content'] ?? 'x';
         $content = $helper->span($content);
@@ -34,6 +42,7 @@ class Dismiss extends Basic
                     'id'        => $params['id'],
                     'style'     => $params['style'],
                     'class'     => $params['class'],
+                    'data-role' => $role,
                     'data-type' => self::DATA_TYPE,
                 ]
             ])
