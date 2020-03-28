@@ -39,13 +39,15 @@ export default class SliderFrame extends Basic {
     };
 
     refresh(e) {
-        if (e.detail.id !== this.id) {
-            return;
-        }
+    if (e.detail.id !== this.id) {
+        return;
+    }
 
-       if (this.frame) {
-           this.frame.src = this.getUrl();
-       }
+    if (this.frame) {
+        this.frame.src = this.getUrl();
+        this.setBodyHeight();
+    }
+
     };
 
     getUrl() {
