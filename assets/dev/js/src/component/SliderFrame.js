@@ -11,10 +11,12 @@ export default class SliderFrame extends Basic {
     addEventListeners() {
         const show = BX.proxy(this.show, this);
         const hide = BX.proxy(this.hide, this);
+        const refresh = BX.proxy(this.refresh, this);
         const event = Constants.sliderFrame.event;
 
         BX.bind(document.body, event.show, show);
         BX.bind(document.body, event.hide, hide);
+        BX.bind(document.body, event.refresh, refresh);
     };
 
     show(e) {
@@ -34,6 +36,16 @@ export default class SliderFrame extends Basic {
         }
 
         super.hide();
+    };
+
+    refresh(e) {
+        if (e.detail.id !== this.id) {
+            return;
+        }
+
+       if (this.frame) {
+           this.frame.src = this.getUrl();
+       }
     };
 
     getUrl() {

@@ -48,6 +48,7 @@ export default {
         event: {
             show: "bx-ui-sliderframe-show",
             hide: "bx-ui-sliderframe-hide",
+            refresh: "bx-ui-sliderframe-refresh",
         },
     }
 }
