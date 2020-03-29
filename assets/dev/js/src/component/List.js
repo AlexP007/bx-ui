@@ -42,14 +42,16 @@ export default class List extends Basic {
     setClickHandler(setSelected) {
         let list = this;
         return function(e) {
-            if (e.target.tagName === 'LI') {
+            if (e.target.tagName === 'LI' || e.target.parentElement.tagName === 'LI') {
+                var li = e.target.closest('li');
                 // всем эл-там удалим класс
                 let listItems = BX.findChild(list.elt, {tag: 'li'}, false, true);
                 listItems.forEach( (li) => {li.className = ''});
                 // установим класс активному эл-ту
-                e.target.className = e.target.dataset.activeClass;
-                list.value = e.target.dataset.value;
-                setSelected(list.value, e.target.textContent);
+                li.className = li.dataset.activeClass;
+                list.value = li.dataset.value;
+                var text = li.firstElementChild.textContent;
+                setSelected(list.value, text);
             }
         };
     }
