@@ -31,7 +31,7 @@ export default class List extends Basic {
     createList(data, settings) {
         let props = settings.class ? {className: settings.class} : {};
         return data.map( (e) => BX.create('li', {
-            text: e.text,
+            html: `<span>${e.text}</span>`,
             props: props,
             dataset: {
                 value: e.value,
