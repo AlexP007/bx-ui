@@ -5,7 +5,7 @@ namespace BxUI\Helper;
 
 
 use BxUI\Traits\Thrower;
-use BxUI\Component\{CounterControl, Dismiss, InputCounter, MultiSelect, Cta, Counter, SliderFrame};
+use BxUI\Component\{CounterControl, Dismiss, InputCounter, MultiSelect, Cta, Counter, Opener, SliderFrame};
 
 /**
  * Class UI
@@ -54,7 +54,7 @@ class UI
         return self::$instance;
     }
 
-    public function multiSelect(array $first, array $second, array $container, array $data): string
+    public function multiSelect(array $first, array $second, array $container, array $data = []): string
     {
         return (new MultiSelect([
             'first'     => $first,
@@ -64,12 +64,12 @@ class UI
         ]) )->render();
     }
 
-    public function cta(array $params): string
+    public function cta(array $params = []): string
     {
         return  (new Cta($params) )->render();
     }
 
-    public function counter(string $id, int $content, array $params): string
+    public function counter(string $id, int $content, array $params = []): string
     {
         $params['id'] = $id;
         $params['content'] = $content;
@@ -77,7 +77,7 @@ class UI
         return (new Counter($params) )->render();
     }
 
-    public function inputCounter(string $id, int $value, array $params): string
+    public function inputCounter(string $id, int $value, array $params = []): string
     {
         $params['id'] = $id;
         $params['value'] = "$value";
@@ -85,7 +85,7 @@ class UI
         return (new InputCounter($params) )->render();
     }
 
-    public function dismiss(string $role, array $params): string
+    public function dismiss(string $role, array $params = []): string
     {
         self::ensureParameter(in_array($role, ['hide', 'remove']), 'Dismiss role could be only hide or remove');
         $params['role'] = $role;
@@ -93,7 +93,7 @@ class UI
         return (new Dismiss($params) )->render();
     }
 
-    public function sliderFrame(string $id, string $url, array $params): string
+    public function sliderFrame(string $id, string $url, array $params = []): string
     {
         $params['id'] = $id;
         $params['url'] = $url;
@@ -101,7 +101,7 @@ class UI
         return (new SliderFrame($params) )->render();
     }
 
-    public function counterControl(string $counterId, string $role, array $params): string
+    public function counterControl(string $counterId, string $role, array $params = []): string
     {
        self::ensureParameter(in_array($role, ['inc', 'dec']), 'CounterControl role could be only inc or dec');
 
@@ -109,5 +109,13 @@ class UI
        $params['role'] = $role;
 
        return (new CounterControl($params) )->render();
+    }
+
+    public function opener(string $modalId, string $content, array $params = []): string
+    {
+        $params['modal'] = $modalId;
+        $params['content'] = $content;
+
+        return (new Opener($params) )->render();
     }
 }

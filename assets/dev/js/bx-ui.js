@@ -5,6 +5,7 @@ import Counter from "./src/component/Counter";
 import InputCounter from "./src/component/InputCounter";
 import CounterControl from "./src/component/CounterControl";
 import Dismiss from "./src/component/Dismiss";
+import Opener from "./src/component/Opener";
 import Constants from "./src/util/const";
 
 BX.ready(handler);
@@ -58,4 +59,11 @@ function handler() {
     }, true, true);
     // Для каждого SliderFrame
     sliderFrames.forEach(elt => {new SliderFrame(elt)});
+
+    // Найдем все Opener
+    const openers =  BX.findChild(document.body, {
+        attribute: {'data-type': Constants.opener.type}
+    }, true, true);
+    // Для каждого Opener
+    openers.forEach(elt => {new Opener(elt)});
 }

@@ -50,5 +50,9 @@ export default {
             hide: "bx-ui-sliderframe-hide",
             refresh: "bx-ui-sliderframe-refresh",
         },
+    },
+
+    opener: {
+        type: "bx-ui-opener",
     }
 }

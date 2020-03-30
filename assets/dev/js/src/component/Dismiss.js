@@ -1,5 +1,6 @@
 import Basic from "./Basic";
 import Constants from '../util/const';
+import {enableBodyScroll} from "../util/bodyScrollLock";
 
 export default class Dismiss extends Basic {
     constructor(elt) {
@@ -21,9 +22,11 @@ export default class Dismiss extends Basic {
             BX.bind(this.getElement(), 'click', function(e) {
                 dismiss.fireOuterEvent(e);
                 if (dismiss.role === 'hide') {
+                    enableBodyScroll(this.modal.getElement() );
                     dismissible.hide()
                 }
                 if (dismiss.role === 'remove') {
+                    enableBodyScroll(this.modal.getElement() )
                     dismissible.remove();
                 }
             })
