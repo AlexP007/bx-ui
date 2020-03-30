@@ -6,6 +6,7 @@ export default class Opener extends Basic {
         super(elt);
         const modalId = this.getData('modal');
         this.modal = new Basic(BX(modalId) );
+        this.addEventListener();
     };
 
     addEventListener() {

@@ -27,11 +27,13 @@ class Opener extends Basic
 
         return [
             $helper->a($params['content'], null, [
-                'id'         => $params['id'],
-                'style'      => $params['style'],
-                'class'      => $params['class'],
-                'data-modal' => $params['modal'],
-                'data-type'  => self::DATA_TYPE,
+                'attributes' => [
+                    'id'         => $params['id'],
+                    'style'      => $params['style'],
+                    'class'      => $params['class'],
+                    'data-modal' => $params['modal'],
+                    'data-type'  => self::DATA_TYPE
+                ]
             ])
         ];
     }
