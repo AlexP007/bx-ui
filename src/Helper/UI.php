@@ -5,7 +5,18 @@ namespace BxUI\Helper;
 
 
 use BxUI\Traits\Thrower;
-use BxUI\Component\{CounterControl, Dismiss, InputCounter, MultiSelect, Cta, Counter, Opener, SliderFrame};
+use BxUI\Component\{
+    CounterControl,
+    Dismiss,
+    InputCounter,
+    MultiSelect,
+    Cta,
+    Counter,
+    Opener,
+    ModalOpener,
+    Modal,
+    SliderFrame
+};
 
 /**
  * Class UI
@@ -111,11 +122,27 @@ class UI
        return (new CounterControl($params) )->render();
     }
 
-    public function opener(string $modalId, string $content, array $params = []): string
+    public function modalOpener(string $modalId, string $content, array $params = []): string
     {
         $params['modal'] = $modalId;
         $params['content'] = $content;
 
+        return (new ModalOpener($params) )->render();
+    }
+
+    public function opener(string $targetId, string $content, array $params = []): string
+    {
+        $params['target'] = $targetId;
+        $params['content'] = $content;
+
         return (new Opener($params) )->render();
+    }
+
+    public function modal(string $modalId, string $content, array $params = []): string
+    {
+        $params['modal'] = $modalId;
+        $params['content'] = $content;
+
+        return (new Modal($params) )->render();
     }
 }

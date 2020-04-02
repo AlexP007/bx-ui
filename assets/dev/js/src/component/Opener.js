@@ -4,8 +4,8 @@ import {disableBodyScroll} from "../util/bodyScrollLock";
 export default class Opener extends Basic {
     constructor(elt) {
         super(elt);
-        const modalId = this.getData('modal');
-        this.modal = new Basic(BX(modalId) );
+        const target = this.getData('target');
+        this.target = new Basic(BX(target) );
         this.addEventListener();
     };
 
@@ -16,7 +16,6 @@ export default class Opener extends Basic {
 
     onClick(e) {
         e.preventDefault();
-        disableBodyScroll(this.modal.getElement() );
-        this.modal.show();
+        this.target.show();
     };
 }

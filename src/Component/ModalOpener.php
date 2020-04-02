@@ -7,7 +7,7 @@ namespace BxUI\Component;
 use BxHelper\Helper\Html;
 
 /**
- * Class Counter
+ * Class ModalOpener
  * @package BxUI\Component
  * @license MIT
  *
@@ -15,9 +15,9 @@ use BxHelper\Helper\Html;
  * @email alex.p.panteleev@gmail.com
  * @link https://github.com/AlexP007/bx-ui
  */
-class Counter extends Basic
+class ModalOpener extends Basic
 {
-    const DATA_TYPE = 'bx-ui-counter';
+    const DATA_TYPE = 'bx-ui-modalopener';
 
     protected function create(): array
     {
@@ -25,12 +25,13 @@ class Counter extends Basic
         $params = $this->params;
 
         return [
-            $helper->span($params['content'], $params['class'], [
+            $helper->a($params['content'], null, [
                 'attributes' => [
-                    'id'        => $params['id'],
-                    'data-min'  => "${params['min']}",
-                    'data-max'  => "${params['max']}",
-                    'data-type' => self::DATA_TYPE,
+                    'id'         => $params['id'],
+                    'style'      => $params['style'],
+                    'class'      => $params['class'],
+                    'data-modal' => $params['modal'],
+                    'data-type'  => self::DATA_TYPE
                 ]
             ])
         ];
