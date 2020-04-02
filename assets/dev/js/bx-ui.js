@@ -6,6 +6,7 @@ import InputCounter from "./src/component/InputCounter";
 import CounterControl from "./src/component/CounterControl";
 import Dismiss from "./src/component/Dismiss";
 import Opener from "./src/component/Opener";
+import ModalOpener from "./src/component/ModalOpener";
 import Constants from "./src/util/const";
 
 BX.ready(handler);
@@ -66,4 +67,11 @@ function handler() {
     }, true, true);
     // Для каждого Opener
     openers.forEach(elt => {new Opener(elt)});
+
+    // Найдем все ModalOpener
+    const modalOpeners =  BX.findChild(document.body, {
+        attribute: {'data-type': Constants.modalOpener.type}
+    }, true, true);
+    // Для каждого Opener
+    modalOpeners.forEach(elt => {new ModalOpener(elt)});
 }

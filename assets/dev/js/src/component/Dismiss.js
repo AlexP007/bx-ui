@@ -21,12 +21,13 @@ export default class Dismiss extends Basic {
         if (dismissible.getElement()) {
             BX.bind(this.getElement(), 'click', function(e) {
                 dismiss.fireOuterEvent(e);
-                if (dismiss.role === 'hide') {
+                if (dismissible.dataset.type === Constants.modal.overlay) {
                     enableBodyScroll(dismissible.getElement() );
+                }
+                if (dismiss.role === 'hide') {
                     dismissible.hide()
                 }
                 if (dismiss.role === 'remove') {
-                    enableBodyScroll(dismissible.getElement() )
                     dismissible.remove();
                 }
             })

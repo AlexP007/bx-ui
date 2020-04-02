@@ -1,5 +1,4 @@
 import Basic from "./Basic.js";
-import {disableBodyScroll} from "../util/bodyScrollLock";
 
 export default class Opener extends Basic {
     constructor(elt) {

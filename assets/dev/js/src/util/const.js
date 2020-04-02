@@ -51,8 +51,13 @@ export default {
             refresh: "bx-ui-sliderframe-refresh",
         },
     },
-
     opener: {
         type: "bx-ui-opener",
+    },
+    modalOpener: {
+        type: "bx-ui-modalopener",
+    },
+    modal: {
+        overlay: "bx-ui-modal-overlay",
     }
 }
