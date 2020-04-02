@@ -30,6 +30,8 @@ class Modal extends Basic
         'right'      => 0,
         'bottom'     => 0,
         'text-align' => 'center',
+        'display'    => 'none',
+        'z-index'    => 1012
     ];
 
     const BEFORE_STYLES = [
@@ -39,6 +41,7 @@ class Modal extends Basic
     ];
 
     const DIALOG_STYLES = [
+        'position'       => 'relative',
         'display'        => 'inline-block',
         'vertical-align' => 'middle',
     ];

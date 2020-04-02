@@ -30,7 +30,7 @@ class Opener extends Basic
                     'id'         => $params['id'],
                     'style'      => $params['style'],
                     'class'      => $params['class'],
-                    'data-modal' => $params['target'],
+                    'data-target' => $params['target'],
                     'data-type'  => self::DATA_TYPE
                 ]
             ])

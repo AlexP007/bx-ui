@@ -30,7 +30,7 @@ class ModalOpener extends Basic
                     'id'         => $params['id'],
                     'style'      => $params['style'],
                     'class'      => $params['class'],
-                    'data-modal' => $params['modal'],
+                    'data-target' => $params['modal'],
                     'data-type'  => self::DATA_TYPE
                 ]
             ])

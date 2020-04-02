@@ -140,7 +140,7 @@ class UI
 
     public function modal(string $modalId, string $content, array $params = []): string
     {
-        $params['modal'] = $modalId;
+        $params['id'] = $modalId;
         $params['content'] = $content;
 
         return (new Modal($params) )->render();
