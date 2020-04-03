@@ -35,4 +35,7 @@ export default class Basic {
     getData(name) {
         return this.dataset ? this.dataset[name] : false;
     };
+    setData(name, value) {
+        this.dataset[name] = value;
+    };
 }

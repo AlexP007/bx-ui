@@ -1,6 +1,8 @@
 import Basic from "./Basic";
+import ElementRepo from "../repo/ElementRepo";
 import Constants from '../util/const';
 import {enableBodyScroll} from "../util/bodyScrollLock";
+import {unFocus} from "../util/focus";
 
 export default class Dismiss extends Basic {
     constructor(elt) {
@@ -22,7 +24,12 @@ export default class Dismiss extends Basic {
             BX.bind(this.getElement(), 'click', function(e) {
                 dismiss.fireOuterEvent(e);
                 if (dismissible.dataset.type === Constants.modal.overlay) {
-                    enableBodyScroll(dismissible.getElement() );
+                    // Получим модалку из репозитория
+                    let modal = ElementRepo.instance.get(dismissible.id);
+                    // снимем блокировку
+                    enableBodyScroll(modal.getElement() );
+                    // вернем фокус
+                    unFocus(modal.opener); //todo: вынести модалку в отдельный компонент
                 }
                 if (dismiss.role === 'hide') {
                     dismissible.hide()
