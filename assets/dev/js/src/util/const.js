@@ -64,14 +64,14 @@ export default {
         type: "bx-ui-tooltip",
         style: {
             tooltip: {
-                paddingBottom: '16',
-                paddingTop: '16',
-                paddingLeft: '6',
-                paddingRight: '6',
+                paddingBottom: 10,
+                paddingTop: 10,
+                paddingLeft: 8,
+                paddingRight: 8,
             },
             arrow: {
-                bottom: '-5',
-                top: '-5',
+                bottom: -5,
+                top: -5,
             }
         }
     }

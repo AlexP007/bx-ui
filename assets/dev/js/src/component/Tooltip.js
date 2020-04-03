@@ -1,7 +1,7 @@
 import Basic from "./Basic";
 import Constants from '../util/const';
 
-import {documentWidthWithoutScroll, elementHeight} from "../util/measure";
+import {documentWidthWithoutScroll} from "../util/measure";
 
 export default class Tooltip extends Basic {
     constructor(elt) {
@@ -11,18 +11,31 @@ export default class Tooltip extends Basic {
     };
 
     addEventListeners() {
+        const elt = this.getElement();
+
         const insert = BX.proxy(this.insertTooltip, this);
         const remove = BX.proxy(this.removeTooltip, this);
 
-        BX.bind(elt, 'mouseenter', insert);
-        BX.bind(elt, 'touchstart', insert);
-        BX.bind(elt, 'mouseleave', remove);
-        BX.bind(elt, 'touchend', remove);
+        if (this.getData('event') === 'hover') {
+            BX.bind(elt, 'mouseenter', insert);
+            BX.bind(elt, 'touchstart', insert);
+            BX.bind(elt, 'mouseleave', remove);
+            BX.bind(elt, 'touchend', remove);
+        } else {
+            const handleOutClick = (e) => {
+                if(this.elt.contains(e.target)) {
+                    return;
+                }
+                remove();
+            };
+            BX.bind(elt, 'click', insert);
+            BX.bind(document.body, 'click', handleOutClick);
+        }
     };
 
     insertTooltip() {
+        document.body.append(this.tooltip);
         this.setCoords();
-        document.append(this.tooltip);
     };
 
     removeTooltip() {
@@ -37,31 +50,26 @@ export default class Tooltip extends Basic {
             'height': 0,
             'border-left': '10px solid transparent',
             'border-right': '10px solid transparent',
-            'left': '50%',
             'transform': 'translateX(-50%)',
+            'z-index': 1009,
         };
 
         if (this.getData('position') === 'top') {
-            arrowStyles['bottom'] = Constants.tooltip.style.arrow.bottom;
+            arrowStyles['bottom'] = Constants.tooltip.style.arrow.bottom + 'px';
             arrowStyles['border-top'] = '10px solid ' + this.getData('background');
         } else {
-            arrowStyles['top'] = Constants.tooltip.style.arrow.top;
+            arrowStyles['top'] = Constants.tooltip.style.arrow.top + 'px';
             arrowStyles['border-bottom'] = '10px solid ' + this.getData('background');
         }
 
         this.dialog = BX.create('div', {
             text: this.getData('tooltip'),
             style: {
-                'background': this.getData('background'),
-                'position': 'absolute',
-                'border-radius': '4px',
-                'padding-bottom': tooltipStyles.paddingBottom + 'px',
-                'padding-top': tooltipStyles.paddingTop + 'px',
-                'padding-left': tooltipStyles.paddingLeft + 'px',
-                'padding-right': tooltipStyles.paddingRight + 'px',
                 'font-family': this.getData('fontFamily'),
                 'font-size': this.getData('fontSize'),
                 'color': this.getData('color'),
+                'position' : 'relative',
+                'z-index': 1010,
             }
         });
         this.arrow = BX.create('div', {
@@ -70,6 +78,13 @@ export default class Tooltip extends Basic {
         this.tooltip = BX.create('div', {
             style: {
                 'position': 'absolute',
+                'background': this.getData('background'),
+                'border-radius': '4px',
+                'padding-bottom': tooltipStyles.paddingBottom + 'px',
+                'padding-top': tooltipStyles.paddingTop + 'px',
+                'padding-left': tooltipStyles.paddingLeft + 'px',
+                'padding-right': tooltipStyles.paddingRight + 'px',
+                'z-index': 1011,
             },
             children: [this.dialog, this.arrow],
         });
@@ -84,23 +99,36 @@ export default class Tooltip extends Basic {
 
         // Теперь рассчитаем координаты тултипа
         let tooltipStyles = Constants.tooltip.style.tooltip;
-        let tooltipHeight = elementHeight(document, this.tooltip);
+        let tooltipHeight = this.tooltip.offsetHeight;
+        let tooltipWidth = Math.min(this.tooltip.offsetWidth, coords.width * 2.5);
+
         let tooltipCoords = {
             x: coords.x,
         };
 
+        // Вначале y
         if (this.getData('position') === 'top') {
-            tooltipCoords.y =  coords.y - tooltipHeight - Constants.tooltip.style.arrow.bottom;
+            tooltipCoords.y =  coords.y - tooltipHeight + Constants.tooltip.style.arrow.bottom;
         } else {
-            tooltipCoords.y =  coords.y + tooltipHeight - Constants.tooltip.style.arrow.top;
+            tooltipCoords.y =  coords.y + coords.height - Constants.tooltip.style.arrow.top;
         }
-        // Ширина тултипа не должна быть больше элеметна + паддинг, но не больше окна
-        let tooltipMaxWidth = coords.width + tooltipStyles.paddingRight > docWidth
-            ? coords.width + tooltipStyles.paddingRight
-            : coords.width;
 
-        BX.style(this.tooltip, 'max-width', tooltipMaxWidth + 'px');
+        // Теперь x
+        // Если расстояние от до окна слева меньше чем расстояние элемента минус паддинг тултипа
+        if (coords.x - tooltipStyles.paddingLeft <= 0) {
+            tooltipCoords.x = 1;
+        } else if (coords.x - tooltipStyles.paddingLeft + tooltipWidth >= docWidth) { // если от тултип не умеащется в доступное расстояние до правого конца
+            tooltipCoords.x = docWidth - 1 - tooltipWidth;
+        } else {
+            tooltipCoords.x = coords.x - tooltipStyles.paddingLeft;
+        }
+
         BX.style(this.tooltip, 'top', tooltipCoords.y + 'px');
         BX.style(this.tooltip, 'left', tooltipCoords.x + 'px');
+
+        // установим стрелку
+        // получим середину элемента
+        let middle = coords.x - tooltipCoords.x + coords.width/2;
+        this.arrow.style.left = middle  + 'px';
     };
 }

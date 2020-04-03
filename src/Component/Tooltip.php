@@ -18,10 +18,11 @@ use BxHelper\Helper\Html;
 class Tooltip extends Basic
 {
     const DATA_TYPE = 'bx-ui-tooltip';
-    const BACKGROUND = 'rgba(0, 0, 0, 0.8)';
+    const BACKGROUND = 'rgba(0, 0, 0)';
     const COLOR = '#FFF';
     const FONT_FAMILY = 'arial';
     const FONT_SIZE = '12px';
+    const EVENT = 'hover';
 
     protected function create(): array
     {
@@ -39,6 +40,7 @@ class Tooltip extends Basic
                     'data-font-size'   => $params['font-size'] ?? self::FONT_SIZE,
                     'data-font-family' => $params['font-family'] ?? self::FONT_FAMILY,
                     'data-background'  => $params['background'] ?? self::BACKGROUND,
+                    'data-event'       => $params['event'] ?? self::EVENT,
                     'data-type'        => self::DATA_TYPE,
                 ]
             ])

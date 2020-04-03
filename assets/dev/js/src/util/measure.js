@@ -13,15 +13,22 @@ function documentWidthWithoutScroll(document) {
 }
 
 function elementWidth(parent, elt) {
+    let position = elt.style.position;
+    elt.style.position = 'static';
+
     parent.append(elt);
-    let width = e.offsetWidth();
+
+    let width = elt.offsetWidth();
+
+    elt.style.position = position;
     elt.remove();
+
     return width;
 }
 
 function elementHeight(parent, elt) {
     parent.append(elt);
-    let height = e.offsetHeight();
+    let height = elt.offsetHeight;
     elt.remove();
     return height;
 }

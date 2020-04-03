@@ -149,6 +149,7 @@ class UI
 
     public function tooltip(string $content, string $tooltip, string $position, array $params = []): string
     {
+        self::ensureParameter(in_array($position, ['top', 'bottom']), 'Tooltip position could be only top or bottom');
         $params['content'] = $content;
         $params['tooltip'] = $tooltip;
         $params['position'] = $position;
