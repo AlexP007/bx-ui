@@ -1,4 +1,5 @@
 import Basic from "./Basic";
+import {getX, getY} from "../util/coords";
 import Constants from '../util/const';
 
 import {documentWidthWithoutScroll} from "../util/measure";
@@ -96,6 +97,8 @@ export default class Tooltip extends Basic {
 
         // теперь получим координаты элемента
         let coords = this.getElement().getBoundingClientRect();
+        coords.x = getX(this.getElement());
+        coords.y = getY(this.getElement());
 
         // Теперь рассчитаем координаты тултипа
         let tooltipHeight = this.tooltip.offsetHeight;
