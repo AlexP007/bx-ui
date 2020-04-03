@@ -11,7 +11,7 @@ export default class Singleton {
 
     static get instance() {
         if (!this[singleton])
-            this[singleton] = new Singleton(singletonEnforcer);
+            this[singleton] = new this(singletonEnforcer);
         return this[singleton];
     }
 

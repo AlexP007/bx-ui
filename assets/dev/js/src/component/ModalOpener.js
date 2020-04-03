@@ -7,6 +7,11 @@ import {focus} from "../util/focus";
 export default class ModalOpener extends Opener {
     constructor(elt) {
         super(elt);
+        // Установим открывающий элемент в репозиторий
+        ElementRepo.instance.set(this.target.id, this.target);
+
+        // Сохраним открывающий элемент в модалке
+        this.target.opener = this.getElement(); //todo: вынести модалку в отдельный компонент
     };
 
     onClick(e) {
@@ -18,10 +23,5 @@ export default class ModalOpener extends Opener {
 
         // Наведем фокус на элемент внутри модалки
         focus(this.target.getElement() );
-
-        // Сохраним открывающий элемент в модалке
-        this.target.opener = this.getElement(); //todo: вынести модалку в отдельный компонент
-        // Установим открывающий элемент в репозиторий
-        ElementRepo.instance.set(this.target.id, this.target);
     };
 }

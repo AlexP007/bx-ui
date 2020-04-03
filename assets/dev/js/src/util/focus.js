@@ -1,4 +1,4 @@
-const FOCUSABLE_SELECTORS = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, *[tabindex], *[contenteditable]';
+const FOCUSABLE_SELECTORS = 'a[href]:not([data-type=bx-ui-dismiss]), area[href], input:not([disabled]):not([data-type=bx-ui-dismiss]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]):not([data-type=bx-ui-dismiss]), iframe, object, embed, *[tabindex], *[contenteditable]';
 
 // Принимает элемент и фокусируется на его первом доступном к фокусировке ребенка
 // Ставит запрет для фокусировки на все элементы вне переданного
