@@ -15,7 +15,8 @@ use BxUI\Component\{
     Opener,
     ModalOpener,
     Modal,
-    SliderFrame
+    SliderFrame,
+    Tooltip
 };
 
 /**
@@ -144,5 +145,14 @@ class UI
         $params['content'] = $content;
 
         return (new Modal($params) )->render();
+    }
+
+    public function tooltip(string $content, string $tooltip, string $position, array $params = []): string
+    {
+        $params['content'] = $content;
+        $params['tooltip'] = $tooltip;
+        $params['position'] = $position;
+
+        return (new Tooltip($params) )->render();
     }
 }
