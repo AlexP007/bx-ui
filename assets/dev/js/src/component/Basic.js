@@ -1,5 +1,3 @@
-import Constants from '../util/const';
-
 export default class Basic {
     constructor(elt) {
         if (elt) {

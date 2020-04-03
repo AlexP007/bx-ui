@@ -6,4 +6,29 @@ function documentHeight(document) {
     );
 }
 
-export {documentHeight};
+function documentWidthWithoutScroll(document) {
+    return Math.max(
+        document.body.clientWidth, document.documentElement.clientWidth
+    );
+}
+
+function elementWidth(parent, elt) {
+    parent.append(elt);
+    let width = e.offsetWidth();
+    elt.remove();
+    return width;
+}
+
+function elementHeight(parent, elt) {
+    parent.append(elt);
+    let height = e.offsetHeight();
+    elt.remove();
+    return height;
+}
+
+export {
+    documentHeight,
+    documentWidthWithoutScroll,
+    elementWidth,
+    elementHeight,
+};

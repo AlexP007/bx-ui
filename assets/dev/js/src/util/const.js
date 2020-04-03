@@ -59,5 +59,20 @@ export default {
     },
     modal: {
         overlay: "bx-ui-modal-overlay",
+    },
+    tooltip: {
+        type: "bx-ui-tooltip",
+        style: {
+            tooltip: {
+                paddingBottom: '16',
+                paddingTop: '16',
+                paddingLeft: '6',
+                paddingRight: '6',
+            },
+            arrow: {
+                bottom: '-5',
+                top: '-5',
+            }
+        }
     }
 }

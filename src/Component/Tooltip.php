@@ -19,6 +19,9 @@ class Tooltip extends Basic
 {
     const DATA_TYPE = 'bx-ui-tooltip';
     const BACKGROUND = 'rgba(0, 0, 0, 0.8)';
+    const COLOR = '#FFF';
+    const FONT_FAMILY = 'arial';
+    const FONT_SIZE = '12px';
 
     protected function create(): array
     {
@@ -28,12 +31,15 @@ class Tooltip extends Basic
         return [
             $helper->span($params['content'], $params['class'], [
                 'attributes' => [
-                    'id'              => $params['id'],
-                    'style'           => $params['style'],
-                    'data-tooltip'    => $params['tooltip'],
-                    'data-position'   => $params['position'],
-                    'data-background' => $params['background'] ?? self::BACKGROUND,
-                    'data-type'       => self::DATA_TYPE,
+                    'id'               => $params['id'],
+                    'style'            => $params['style'],
+                    'data-tooltip'     => $params['tooltip'],
+                    'data-position'    => $params['position'],
+                    'data-color'       => $params['color'] ?? self::COLOR,
+                    'data-font-size'   => $params['font-size'] ?? self::FONT_SIZE,
+                    'data-font-family' => $params['font-family'] ?? self::FONT_FAMILY,
+                    'data-background'  => $params['background'] ?? self::BACKGROUND,
+                    'data-type'        => self::DATA_TYPE,
                 ]
             ])
         ];

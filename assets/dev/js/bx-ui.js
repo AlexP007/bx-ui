@@ -7,6 +7,7 @@ import CounterControl from "./src/component/CounterControl";
 import Dismiss from "./src/component/Dismiss";
 import Opener from "./src/component/Opener";
 import ModalOpener from "./src/component/ModalOpener";
+import Tooltip from "./src/component/Tooltip";
 import Constants from "./src/util/const";
 
 BX.ready(handler);
@@ -74,4 +75,11 @@ function handler() {
     }, true, true);
     // Для каждого Opener
     modalOpeners.forEach(elt => {new ModalOpener(elt)});
+
+    // Найдем все Tooltip
+    const tooltips =  BX.findChild(document.body, {
+        attribute: {'data-type': Constants.tooltip.type}
+    }, true, true);
+    // Для каждого Opener
+    tooltips.forEach(elt => {new Tooltip(elt)});
 }
