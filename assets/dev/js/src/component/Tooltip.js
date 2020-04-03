@@ -98,14 +98,12 @@ export default class Tooltip extends Basic {
         let coords = this.getElement().getBoundingClientRect();
 
         // Теперь рассчитаем координаты тултипа
-        let tooltipStyles = Constants.tooltip.style.tooltip;
         let tooltipHeight = this.tooltip.offsetHeight;
-        let tooltipWidth = Math.min(this.tooltip.offsetWidth, coords.width * 2.5);
+        let tooltipWidth = this.tooltip.offsetWidth;
 
         let tooltipCoords = {
             x: coords.x,
         };
-
         // Вначале y
         if (this.getData('position') === 'top') {
             tooltipCoords.y =  coords.y - tooltipHeight + Constants.tooltip.style.arrow.bottom;
@@ -115,12 +113,14 @@ export default class Tooltip extends Basic {
 
         // Теперь x
         // Если расстояние от до окна слева меньше чем расстояние элемента минус паддинг тултипа
-        if (coords.x - tooltipStyles.paddingLeft <= 0) {
-            tooltipCoords.x = 1;
-        } else if (coords.x - tooltipStyles.paddingLeft + tooltipWidth >= docWidth) { // если от тултип не умеащется в доступное расстояние до правого конца
-            tooltipCoords.x = docWidth - 1 - tooltipWidth;
+        let offset = (tooltipWidth - coords.width)/2;
+
+        if (coords.x - offset <= 0) {
+            tooltipCoords.x = 2;
+        } else if (coords.x - offset + tooltipWidth >= docWidth) { // если от тултип не умещается в доступное расстояние до правого конца
+            tooltipCoords.x = docWidth - tooltipWidth - 2;
         } else {
-            tooltipCoords.x = coords.x - tooltipStyles.paddingLeft;
+            tooltipCoords.x = coords.x - offset;
         }
 
         BX.style(this.tooltip, 'top', tooltipCoords.y + 'px');
@@ -129,6 +129,6 @@ export default class Tooltip extends Basic {
         // установим стрелку
         // получим середину элемента
         let middle = coords.x - tooltipCoords.x + coords.width/2;
-        this.arrow.style.left = middle  + 'px';
+        this.arrow.style.left = middle  + 'px'; //todo разобраться со стрелкой впритык к окну
     };
 }
